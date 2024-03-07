@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1071721541502",
+    "project_id": "tiktak-afdb0",
+    "storage_bucket": "tiktak-afdb0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071721541502:android:4be9bd7d073199af5bcd2f",
+        "android_client_info": {
+          "package_name": "com.example.nookienation_tictactoe_calc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANDuOKiULdRmRSleGLH6NteT8tOOXGvqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
