@@ -1,7 +1,7 @@
 {
   "file_generated_by": "FlutterFire CLI",
   "purpose": "FirebaseAppID & ProjectID for this Firebase app in this directory",
-  "GOOGLE_APP_ID": "1:1071721541502:ios:81c228e9349e9f4b5bcd2f",
-  "FIREBASE_PROJECT_ID": "tiktak-afdb0",
-  "GCM_SENDER_ID": "1071721541502"
+  "GOOGLE_APP_ID": "1:995544730444:ios:d99bed12dd2cbab7c01de9",
+  "FIREBASE_PROJECT_ID": "nookienation-tictactoe-calc",
+  "GCM_SENDER_ID": "995544730444"
 }

@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:nookienation_tictactoe_calc/firebase_options.dart';
 import 'package:nookienation_tictactoe_calc/routes/routes.dart';
 import 'package:nookienation_tictactoe_calc/screens/splash.dart';
 import 'package:nookienation_tictactoe_calc/widgets/life_cycle_manager.dart';
@@ -10,7 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'Helper/color.dart';
 import 'Helper/constant.dart';
 import 'Helper/demo_localization.dart';
-import 'firebase_options.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "995544730444",
+    "firebase_url": "https://nookienation-tictactoe-calc-default-rtdb.firebaseio.com",
     "project_id": "nookienation-tictactoe-calc",
     "storage_bucket": "nookienation-tictactoe-calc.appspot.com"
   },

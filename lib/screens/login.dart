@@ -115,7 +115,7 @@ class _AuthOptionsScreenState extends State<Login> {
                   ),
                 ),
                 onPressed: () async {
-                  Auth.signin(context, false, "Android",
+                 await  Auth.signin(context, false, "Android",
                       email: "", password: "");
                 },
                 icon: getSvgImage(imageName: "google_logo",imageColor: Colors.white),

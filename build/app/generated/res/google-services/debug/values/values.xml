@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="gcm_defaultSenderId" translatable="false">995544730444</string>
-    <string name="google_api_key" translatable="false">AIzaSyDGLzZ7-s3tVToOgabo0_ZDe2qWUD-H7cw</string>
-    <string name="google_app_id" translatable="false">1:995544730444:android:7e1ff545886f2014c01de9</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDGLzZ7-s3tVToOgabo0_ZDe2qWUD-H7cw</string>
-    <string name="google_storage_bucket" translatable="false">nookienation-tictactoe-calc.appspot.com</string>
-    <string name="project_id" translatable="false">nookienation-tictactoe-calc</string>
-</resources>
