@@ -38,6 +38,13 @@
             {
               "client_id": "995544730444-pfkqjugfok5csj80hliqhou2h34e6f2c.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "995544730444-hd08qrp9gdq0lmj6h53vkn9vtqmaku4d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tictak.RunnerTests"
+              }
             }
           ]
         }

@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -48,6 +42,17 @@ class DefaultFirebaseOptions {
         );
     }
   }
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCbD9u_5s_SCVVaQd5mVrxjISjPrKj6BDg',
+    appId: '1:995544730444:web:fb80e85a11c83756c01de9',
+    messagingSenderId: '995544730444',
+    projectId: 'nookienation-tictactoe-calc',
+    authDomain: 'nookienation-tictactoe-calc.firebaseapp.com',
+    databaseURL: 'https://nookienation-tictactoe-calc-default-rtdb.firebaseio.com',
+    storageBucket: 'nookienation-tictactoe-calc.appspot.com',
+    measurementId: 'G-ZS55E7WRVW',
+  );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDGLzZ7-s3tVToOgabo0_ZDe2qWUD-H7cw',
@@ -68,5 +73,17 @@ class DefaultFirebaseOptions {
     androidClientId: '995544730444-u019jeqhf0hdv060l2clq6hskrdnddur.apps.googleusercontent.com',
     iosClientId: '995544730444-uu0lpn1lpfmve1dpdpqpf7l48c5besvj.apps.googleusercontent.com',
     iosBundleId: 'com.nookienationtictactoecalc',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDzBw8BRsI8Sh3dlDboNUa4w77R_aEKfyk',
+    appId: '1:995544730444:ios:1f1569b68eefe53dc01de9',
+    messagingSenderId: '995544730444',
+    projectId: 'nookienation-tictactoe-calc',
+    databaseURL: 'https://nookienation-tictactoe-calc-default-rtdb.firebaseio.com',
+    storageBucket: 'nookienation-tictactoe-calc.appspot.com',
+    androidClientId: '995544730444-u019jeqhf0hdv060l2clq6hskrdnddur.apps.googleusercontent.com',
+    iosClientId: '995544730444-r3v1klpnn3u8gru1hdqabtkmkk3hr70d.apps.googleusercontent.com',
+    iosBundleId: 'com.nookienationTictactoeCalc.RunnerTests',
   );
 }

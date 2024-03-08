@@ -1396,7 +1396,7 @@ class _CoinState extends State<Coin> {
     return GestureDetector(
       onTap: () {
         if (!_auth.currentUser!.isAnonymous) {
-          Navigator.pushNamed(context, "/shop");
+        //  Navigator.pushNamed(context, "/shop");
         }
       },
       child: Chip(
