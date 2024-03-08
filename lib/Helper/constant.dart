@@ -9,13 +9,15 @@ final bool wantGoogleAd = true;
 
 //admob/google ad settingz
 //Example ids
-final String rewardedAdID = "ca-app-pub-3940256099942544/5224354917";
-final String interstitialAdID = "ca-app-pub-3940256099942544/1033173712";
+// final String rewardedAdID = "ca-app-pub-3940256099942544/5224354917";
+// final String interstitialAdID = "ca-app-pub-3940256099942544/1033173712";
 //add your id here
-/*
-final String rewardedAdID= Platform.isAndroid?"android reward ad id here ":"ios reward ad id here";
-final String interstitialAdID= Platform.isAndroid?"android  interstitial ad id here ":"ios  interstitial ad id here";
-*/
+
+final String rewardedAdID =
+    Platform.isAndroid ? "pub-3707581644297685" : "ios reward ad id here";
+final String interstitialAdID = Platform.isAndroid
+    ? "pub-3707581644297685"
+    : "ios  interstitial ad id here";
 
 //unity ad setting
 //final String gameID =  Platform.isAndroid ? "place your android ad gameID  here":"place your android ad gameID  here";
