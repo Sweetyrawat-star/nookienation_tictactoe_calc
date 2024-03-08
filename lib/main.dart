@@ -5,10 +5,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:nookienation_tictactoe_calc/Helper/string.dart';
 import 'package:nookienation_tictactoe_calc/firebase_options.dart';
 import 'package:nookienation_tictactoe_calc/routes/routes.dart';
 import 'package:nookienation_tictactoe_calc/screens/privacy_policy.dart';
 import 'package:nookienation_tictactoe_calc/screens/splash.dart';
+import 'package:nookienation_tictactoe_calc/screens/web_privacy_policy.dart';
 import 'package:nookienation_tictactoe_calc/widgets/life_cycle_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Helper/color.dart';
@@ -36,35 +38,6 @@ Future<void> main() async {
     runApp(MyApp());
   }
 }
-
-class MyAppPrivacyUrl extends StatefulWidget {
-  const MyAppPrivacyUrl({super.key});
-
-  @override
-  State<MyAppPrivacyUrl> createState() => _MyAppPrivacyUrlState();
-}
-
-class _MyAppPrivacyUrlState extends State<MyAppPrivacyUrl> {
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.light,
-        useMaterial3: true,
-        colorSchemeSeed: Colors.green,
-      ),
-      // initialRoute: SplashScreen.routeName,
-      home: PrivacyPolicy(),
-      // routes: {
-      //   PrivacyPolicy.routeName: (context) => PrivacyPolicy(),
-      // },
-    );
-    ;
-  }
-}
-
 class MyApp extends StatefulWidget {
   MyApp({super.key});
 
