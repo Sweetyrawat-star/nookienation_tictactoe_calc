@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -19,17 +20,17 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   ///
-  if (Firebase.apps.isNotEmpty) {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-  } else {
-    await Firebase.initializeApp();
-  }
+  // if (Firebase.apps.isNotEmpty) {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  // } else {
+  //   await Firebase.initializeApp();
+  // }
 
   //await MobileAds.instance.initialize();
 
-  if (!Platform.isAndroid && !Platform.isIOS) {
+  if (kIsWeb) {
     runApp(MyAppPrivacyUrl());
   } else {
     runApp(MyApp());
@@ -48,16 +49,18 @@ class _MyAppPrivacyUrlState extends State<MyAppPrivacyUrl> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          brightness: Brightness.light,
-          useMaterial3: true,
-          colorSchemeSeed: Colors.green,
-        ),
-        initialRoute: SplashScreen.routeName,
-        routes: {
-          PrivacyPolicy.routeName: (context) => PrivacyPolicy(),
-        });
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        useMaterial3: true,
+        colorSchemeSeed: Colors.green,
+      ),
+      // initialRoute: SplashScreen.routeName,
+      home: PrivacyPolicy(),
+      // routes: {
+      //   PrivacyPolicy.routeName: (context) => PrivacyPolicy(),
+      // },
+    );
     ;
   }
 }
