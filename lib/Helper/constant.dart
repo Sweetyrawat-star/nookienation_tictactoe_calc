@@ -68,12 +68,12 @@ final String appStoreId = '6460890750';
 final String appFind = "You can find our app from below url \nAndroid:";
 
 //-- Add Android application package here (if published on Play Store)
-final String packageName = 'com.example.nookienation_tictactoe_calc';
+final String packageName = 'com.nookienation_tictactoe_calc';
 final String androidLink =
     'https://play.google.com/store/apps/details?id=$packageName';
 
 //-- Add IOS application package & link here (if published on App Store)
-final String iosPackage = 'com.example.nookienation_tictactoe_calc';
+final String iosPackage = 'com.nookienation_tictactoe_calc';
 final String iosLink = 'https://apps.apple.com/id$appStoreId';
 
 List<String> langCode = ["en", "es", "hi", "ar", "ru", "ja", "de"];

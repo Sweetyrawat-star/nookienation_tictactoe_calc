@@ -67,7 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1071721541502',
     projectId: 'tiktak-afdb0',
     storageBucket: 'tiktak-afdb0.appspot.com',
-    iosBundleId: 'com.example.nookienation_tictactoe_calc',
+    iosBundleId: 'com.nookienation_tictactoe_calc',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -76,6 +76,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1071721541502',
     projectId: 'tiktak-afdb0',
     storageBucket: 'tiktak-afdb0.appspot.com',
-    iosBundleId: 'com.example.nookienation_tictactoe_calc.RunnerTests',
+    iosBundleId: 'com.nookienation_tictactoe_calc.RunnerTests',
   );
 }
