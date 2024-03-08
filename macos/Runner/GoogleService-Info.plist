@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>995544730444-r3v1klpnn3u8gru1hdqabtkmkk3hr70d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.995544730444-r3v1klpnn3u8gru1hdqabtkmkk3hr70d</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>995544730444-u019jeqhf0hdv060l2clq6hskrdnddur.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDzBw8BRsI8Sh3dlDboNUa4w77R_aEKfyk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>995544730444</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.nookienationTictactoeCalc.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>nookienation-tictactoe-calc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nookienation-tictactoe-calc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:995544730444:ios:1f1569b68eefe53dc01de9</string>
+	<key>DATABASE_URL</key>
+	<string>https://nookienation-tictactoe-calc-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
