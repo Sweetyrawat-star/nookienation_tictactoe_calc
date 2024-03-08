@@ -8,6 +8,9 @@ import '../Helper/constant.dart';
 import '../Helper/utils.dart';
 
 class SplashScreen extends StatefulWidget {
+
+  static const routeName = '/splashScreen';
+
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }

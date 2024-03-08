@@ -17,7 +17,7 @@ import '../Helper/constant.dart';
 
 class PrivacyPolicy extends StatefulWidget {
   final String? title;
-
+  static const routeName = '/privacyPolicy';
   const PrivacyPolicy({super.key, this.title});
 
   @override

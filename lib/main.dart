@@ -1,3 +1,4 @@
+import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:nookienation_tictactoe_calc/firebase_options.dart';
 import 'package:nookienation_tictactoe_calc/routes/routes.dart';
+import 'package:nookienation_tictactoe_calc/screens/privacy_policy.dart';
 import 'package:nookienation_tictactoe_calc/screens/splash.dart';
 import 'package:nookienation_tictactoe_calc/widgets/life_cycle_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,11 +14,11 @@ import 'Helper/color.dart';
 import 'Helper/constant.dart';
 import 'Helper/demo_localization.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-///
+
+  ///
   if (Firebase.apps.isNotEmpty) {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -27,7 +29,37 @@ Future<void> main() async {
 
   //await MobileAds.instance.initialize();
 
-  runApp(MyApp());
+  if (!Platform.isAndroid && !Platform.isIOS) {
+    runApp(MyAppPrivacyUrl());
+  } else {
+    runApp(MyApp());
+  }
+}
+
+class MyAppPrivacyUrl extends StatefulWidget {
+  const MyAppPrivacyUrl({super.key});
+
+  @override
+  State<MyAppPrivacyUrl> createState() => _MyAppPrivacyUrlState();
+}
+
+class _MyAppPrivacyUrlState extends State<MyAppPrivacyUrl> {
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          brightness: Brightness.light,
+          useMaterial3: true,
+          colorSchemeSeed: Colors.green,
+        ),
+        initialRoute: SplashScreen.routeName,
+        routes: {
+          PrivacyPolicy.routeName: (context) => PrivacyPolicy(),
+        });
+    ;
+  }
 }
 
 class MyApp extends StatefulWidget {
@@ -46,6 +78,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
+
   setLocale(Locale locale) {
     if (mounted)
       setState(() {
