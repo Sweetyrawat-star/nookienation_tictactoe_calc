@@ -383,6 +383,8 @@ class _ProfileBodyState extends State<Profile> {
                           SizedBox(height: 20,),
                           getTile(utils.getTranslated(context, "calculator"),
                               "", false),
+                       /*   getTile(utils.getTranslated(context, "calculator"),
+                              "", false),
                           getTile(utils.getTranslated(context, "history"),
                               "history_icon", true),
                           if (!_auth.currentUser!.isAnonymous) ...[
@@ -390,7 +392,7 @@ class _ProfileBodyState extends State<Profile> {
                                 "shop_icon", true),
                             getTile(utils.getTranslated(context, "skin"),
                                 "skin_icon", true),
-                          ],
+                          ],*/
                           if (_auth.currentUser!.isAnonymous) ...[
                             InkWell(
                               onTap: () async {
@@ -427,8 +429,8 @@ class _ProfileBodyState extends State<Profile> {
                               "contactus_icon", true),
                           getTile(utils.getTranslated(context, "aboutUs"),
                               "aboutus_icon", true),
-                          getTile(utils.getTranslated(context, "termCond"),
-                              "termscond_icon", true),
+                      /*    getTile(utils.getTranslated(context, "termCond"),
+                              "termscond_icon", true),*/
                           getTile(utils.getTranslated(context, "privacy"),
                               "privacypolicy_icon", true),
                           getTile(
@@ -437,8 +439,8 @@ class _ProfileBodyState extends State<Profile> {
                               true),
                           getTile(utils.getTranslated(context, "rate"),
                               "rateus_icon", true),
-                          getTile(utils.getTranslated(context, "share"),
-                              "share_app", true),
+                      /*    getTile(utils.getTranslated(context, "share"),
+                              "share_app", true),*/
                           getTile(utils.getTranslated(context, "logout"),
                               "logout_icon", true),
                           getTile(utils.getTranslated(context, "deleteAccount"),
@@ -596,7 +598,7 @@ class _ProfileBodyState extends State<Profile> {
             Navigator.push(
                 context, CupertinoPageRoute(builder: (context) => Calculator()));
           }
-          else if (title == utils.getTranslated(context, "history")) {
+ /*         else if (title == utils.getTranslated(context, "history")) {
             showDialog(
                 context: context,
                 builder: (context) {
@@ -628,14 +630,15 @@ class _ProfileBodyState extends State<Profile> {
                   );
                 });
             //   await InternetAddress.lookup('google.com');
-            /*   Navigator.of(context).push(
+            *//*   Navigator.of(context).push(
               CupertinoPageRoute(
                   builder: (context) {
                     return GameHistory();
                   },
                   fullscreenDialog: true),
-            );*/
-          } else if (title == utils.getTranslated(context, "shop")) {
+            );*//*
+          }
+          else if (title == utils.getTranslated(context, "shop")) {
             showDialog(
                 context: context,
                 builder: (context) {
@@ -669,7 +672,8 @@ class _ProfileBodyState extends State<Profile> {
 
             //  await InternetAddress.lookup('google.com');
             //  Navigator.pushNamed(context, "/shop");
-          } else if (title == utils.getTranslated(context, "skin")) {
+          }
+          else if (title == utils.getTranslated(context, "skin")) {
             showDialog(
                 context: context,
                 builder: (context) {
@@ -702,7 +706,8 @@ class _ProfileBodyState extends State<Profile> {
                 });
             //  await InternetAddress.lookup('google.com');
             // Navigator.of(context).pushNamed("/skin");
-          }
+          }*/
+
         } on SocketException catch (_) {
           var dialog = Dialoge();
           dialog.error(context);
@@ -726,7 +731,8 @@ class _ProfileBodyState extends State<Profile> {
                   builder: (context) => PrivacyPolicy(
                     title: utils.getTranslated(context, "contactUs"),
                   )));
-        } else if (title == utils.getTranslated(context, "termCond")) {
+        }
+/*        else if (title == utils.getTranslated(context, "termCond")) {
           music.play(click);
           Navigator.push(
               context,
@@ -734,7 +740,8 @@ class _ProfileBodyState extends State<Profile> {
                   builder: (context) => PrivacyPolicy(
                     title: utils.getTranslated(context, "termCond"),
                   )));
-        } else if (title == utils.getTranslated(context, "privacy")) {
+        } */
+        else if (title == utils.getTranslated(context, "privacy")) {
           music.play(click);
           Navigator.push(
               context,
@@ -748,12 +755,14 @@ class _ProfileBodyState extends State<Profile> {
               context, CupertinoPageRoute(builder: (context) => HowToPlay()));
         } else if (title == utils.getTranslated(context, "rate")) {
           _openStoreListing();
-        } else if (title == utils.getTranslated(context, "share")) {
+        }
+      /*  else if (title == utils.getTranslated(context, "share")) {
           var str =
               "$appName\n\n$appFind$androidLink$packageName\n\n iOS:\n$iosLink$iosPackage";
 
           Share.share(str);
-        } else if (title == utils.getTranslated(context, "logout")) {
+        } */
+        else if (title == utils.getTranslated(context, "logout")) {
           showDialog(
               context: context,
               builder: (context) {

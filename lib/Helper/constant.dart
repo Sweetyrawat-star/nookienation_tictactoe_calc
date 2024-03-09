@@ -90,7 +90,7 @@ final String termText =
     "<p></p><h2><b>Terms and conditions</b></h2>Lorem ipsum dolo nisl.<br><br> Donec molestie imperdiet.<br><br>Ut ullamcorper   Vivamus interdum, enim nec egestas vulputate, purus dui convallis velit, eu elementum massa nibh a arcu nulla.<br><br>Proin mollis  mollis lacus pharetra sit amet. <br><br>Maecenas ut diam lor at lorem.<br><br>Sed non placerat eracelerisque.</p>";
 
 final String aboutText =
-    "<p>Welcome to <b>Tic Toc Toe</b><br><br>Made by <b>NueStack Technologies</b></p>";
+    "<p>Welcome to <b>Nookienation Tic Tac Toe Calc</b><br><br>Made by <b>NueStack Technologies</b></p>";
 
 final String contactText =
     "<h2><strong>Contact Us</strong></h2> <p>For any kind of queries related to products, orders or services feel free to contact us on our official email address or phone number as given below :</p> <p>&nbsp;</p><p>Call <a href=tel:9876543210>9876543210</a></p><p>Email <a href=mailto:abc@gmail.com>abc@gmail.com</a></p></p>";
