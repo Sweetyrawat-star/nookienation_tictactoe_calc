@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/nookienation_tictactoe_calc",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
