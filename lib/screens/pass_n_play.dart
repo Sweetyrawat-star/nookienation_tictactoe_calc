@@ -385,8 +385,8 @@ class _PassNPLayState extends State<PassNPLay> {
                         Row(
                           children: [
                             CircleAvatar(
-                              child: getSvgImage(
-                                  imageName: "signin_Dora",
+                              child: Image.asset(
+                                  'assets/images/kittytext.png',
                                   width: 154,
                                   height: 172),
                               radius: 25,
@@ -450,8 +450,8 @@ class _PassNPLayState extends State<PassNPLay> {
                               padding: const EdgeInsets.only(left: 8.0),
                               child: CircleAvatar(
                                 backgroundColor: Colors.transparent,
-                                child: getSvgImage(
-                                    imageName: "signin_Dora",
+                                child: Image.asset(
+                                   "assets/images/kittytext.png",
                                     width: 154,
                                     height: 172),
                                 radius: 25,

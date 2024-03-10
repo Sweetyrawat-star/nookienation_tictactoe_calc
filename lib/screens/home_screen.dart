@@ -64,7 +64,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
   late Animation<double> topLastContainerOpacityAnimation;
   late Animation<double> lastTopContainerOpacityAnimation;
 
-  late Animation<Offset> doraAnimation;
+  late Animation<Offset> kittyAnimation;
   late Animation<Offset> leftAnimation;
   bool swipeUP = false;
   late AnimationController centerAnimationController;
@@ -74,7 +74,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
     Item(
         icon: "offline_white",
         name: "OFFLINE PLAY",
-        desc: "Play with the Clever Fox DORA"),
+        desc: "Play with the Clever Fox KITTY"),
     Item(
         icon: "play_random",
         name: "PLAY WITH RANDOM",
@@ -99,7 +99,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
       ),
     );
 
-    doraAnimation = Tween<Offset>(
+    kittyAnimation = Tween<Offset>(
       begin: Offset(0.0, 1.0),
       end: Offset(0.0, 0.0),
     ).animate(
@@ -122,7 +122,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
         Item(
           icon: "offline_white",
           name: utils.getTranslated(context, "OFFLINE_PLAY"),
-          desc: utils.getTranslated(context, "Play_with_the_Clever_Fox_DORA"),
+          desc: utils.getTranslated(context, "Play_with_the_Clever_Fox_KITTY"),
         ),
         Item(
             icon: "play_random",
@@ -146,7 +146,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
       Item(
         icon: "offline_white",
         name: utils.getTranslated(context, "OFFLINE_PLAY"),
-        desc: utils.getTranslated(context, "Play_with_the_Clever_Fox_DORA"),
+        desc: utils.getTranslated(context, "Play_with_the_Clever_Fox_KITTY"),
       ),
       Item(
           icon: "play_random",
@@ -346,7 +346,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SlideTransition(
-                          position: doraAnimation,
+                          position: kittyAnimation,
                           child: Align(
                             alignment: Alignment.topLeft,
                             child: SizedBox(
@@ -361,7 +361,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                         ),
 
                         SlideTransition(
-                          position: doraAnimation,
+                          position: kittyAnimation,
                           child: Image.asset(
                            // "assets/images/kittytext.png",
                               "assets/images/Kitty.png",

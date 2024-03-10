@@ -73,7 +73,7 @@ class _SkinsState extends State<Skins> {
       });
     } else {
       skinData.add(
-          getSkin("DORA Classic", "cross_skin", "circle_skin", 0, true, true));
+          getSkin("KITTY Classic", "cross_skin", "circle_skin", 0, true, true));
     }
     return skinData;
   }

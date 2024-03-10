@@ -49,7 +49,7 @@ class _FindingPlayerScreenState extends State<FindingPlayerScreen>
   bool isplaying = false;
   bool canUpdateUi = false;
   bool isCoinAndCountValueUpdated = false;
-  String oppMsg = findingOpp, img = "dora_findopponent", btnTxt = "Cancel";
+  String oppMsg = findingOpp, img = "assets/images/kittyonly.png", btnTxt = "Cancel";
   String? imagex, imageo;
   late DatabaseReference _userSkinRef;
 
@@ -77,7 +77,7 @@ class _FindingPlayerScreenState extends State<FindingPlayerScreen>
         }
         oppMsg = utils.getTranslated(context, "notFoundOpp");
         opponentPlayerName = utils.getTranslated(context, "noOpponentOnline");
-        img = "dora_noopponent";
+        img = "assets/images/kittyonly.png";
         btnTxt = utils.getTranslated(context, "tryAgain");
       });
     });
@@ -198,7 +198,7 @@ class _FindingPlayerScreenState extends State<FindingPlayerScreen>
                 keyOfGame.notifyListeners();
 
                 oppMsg = utils.getTranslated(context, "foundOpp");
-                img = "dora_oppentfind";
+                img = "assets/images/kittyonly.png";
                 btnTxt = utils.getTranslated(context, "cancel");
                 if (mounted) setState(() {});
               }
@@ -335,8 +335,8 @@ class _FindingPlayerScreenState extends State<FindingPlayerScreen>
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            getSvgImage(
-                                imageName: img, width: 123, height: 137),
+                            Image.asset(
+                                img, width: 123, height: 137),
                             Padding(
                               padding: const EdgeInsets.only(top: 18.0),
                               child: Text(oppMsg),
@@ -511,7 +511,7 @@ class _FindingPlayerScreenState extends State<FindingPlayerScreen>
                                       context, "findingOpp");
                                   opponentPlayerName = utils.getTranslated(
                                       context, "waitForOpponent");
-                                  img = "dora_findopponent";
+                                  img = "assets/images/kittyonly.png";
                                   btnTxt = "Cancel";
                                 });
                                 findGame();
@@ -525,7 +525,7 @@ class _FindingPlayerScreenState extends State<FindingPlayerScreen>
                                         context, "notFoundOpp");
                                     opponentPlayerName = utils.getTranslated(
                                         context, "noOpponentOnline");
-                                    img = "dora_noopponent";
+                                    img = "assets/images/kittyonly.png";
                                     btnTxt = utils.getTranslated(
                                         context, "tryAgain");
                                   });

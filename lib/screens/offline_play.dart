@@ -12,10 +12,10 @@ import '../widgets/alertDialoge.dart';
 import 'splash.dart';
 
 class SinglePlayerScreenActivity extends StatefulWidget {
-  String? playerSkin, doraSkin;
+  String? playerSkin, kittySkin;
   final int? levelType;
 
-  SinglePlayerScreenActivity(this.playerSkin, this.doraSkin, this.levelType);
+  SinglePlayerScreenActivity(this.playerSkin, this.kittySkin, this.levelType);
 
   @override
   _SinglePlayerScreenActivityState createState() =>
@@ -52,15 +52,15 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
     getFieldValue("username", (e) => _username = e, (e) => _username = e);
 
     // For Compatibility with older versions, as we have changed to use svg instead of png.
-    if (widget.doraSkin!.endsWith('.png')) {
-      widget.doraSkin =
-          widget.doraSkin!.split('.png').first.split('images/').last;
+    if (widget.kittySkin!.endsWith('.png')) {
+      widget.kittySkin =
+          widget.kittySkin!.split('.png').first.split('images/').last;
     }
     if (widget.playerSkin!.endsWith('.png')) {
       widget.playerSkin =
           widget.playerSkin!.split('.png').first.split('images/').last;
     }
-    print("RM :: Dora Skin :: ${widget.doraSkin}");
+    print("RM :: Kitty Skin :: ${widget.kittySkin}");
     print("RM :: Player Skin :: ${widget.playerSkin}");
     Future.delayed(Duration.zero, playGame);
   }
@@ -92,7 +92,7 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
   @override
   void didChangeDependencies() {
     currentMove = player == "X"
-        ? utils.getTranslated(context, "doraTurn")
+        ? utils.getTranslated(context, "kittyTurn")
         : utils.getTranslated(context, "yourTurn");
     super.didChangeDependencies();
   }
@@ -141,7 +141,7 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
               if (winner == "0" && gameStatus == "tie") {
                 Dialoge()
                   ..tie(context, "Singleplayer", "", "", widget.playerSkin,
-                      widget.doraSkin, widget.levelType);
+                      widget.kittySkin, widget.levelType);
               }
               _countDownPlayer.pause();
               setState(() {});
@@ -159,7 +159,7 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
 
       Dialoge.winner(
         context,
-        winner == "1" ? _username : utils.getTranslated(context, "dora"),
+        winner == "1" ? _username : utils.getTranslated(context, "kitty"),
         winner == "1" ? _profilePic : "",
         "",
         "",
@@ -175,7 +175,7 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
 
     if (gameStatus == "started") {
       currentMove = player == "X"
-          ? utils.getTranslated(context, "doraTurn")
+          ? utils.getTranslated(context, "kittyTurn")
           : utils.getTranslated(context, "yourTurn");
 
       setState(() {});
@@ -258,7 +258,7 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
           player = "X";
           _countDownPlayer.restart();
 
-          currentMove = utils.getTranslated(context, "doraTurn");
+          currentMove = utils.getTranslated(context, "kittyTurn");
 
           setState(() {});
           playGame();
@@ -288,7 +288,7 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
     }
   }
 
-  var dora = "X", human = "O";
+  var kitty = "X", human = "O";
 
   dynamic minimax(newBoard, player) {
     var availableSpots = [];
@@ -298,7 +298,7 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
         availableSpots.add(i);
       }
     }
-    if (checkWinning(newBoard, dora)) {
+    if (checkWinning(newBoard, kitty)) {
       return {"score": 10};
     } else if (checkWinning(newBoard, human)) {
       return {"score": -10};
@@ -313,12 +313,12 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
       move["index"] = newBoard[availableSpots[i]];
 
       newBoard[availableSpots[i]] = player;
-      if (player == dora) {
+      if (player == kitty) {
         var result = minimax(newBoard, human);
 
         move["score"] = result["score"];
       } else {
-        var result = minimax(newBoard, dora);
+        var result = minimax(newBoard, kitty);
 
         move["score"] = result["score"];
       }
@@ -328,7 +328,7 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
 
     var bestmove;
 
-    if (player == dora) {
+    if (player == kitty) {
       var bestscore = -10000;
       for (var i = 0; i < moves.length; i++) {
         if (moves[i]["score"] > bestscore) {
@@ -432,10 +432,10 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
                                 _countDownPlayer.pause();
 
                                 currentMove !=
-                                        utils.getTranslated(context, "doraTurn")
+                                        utils.getTranslated(context, "kittyTurn")
                                     ? Dialoge.winner(
                                         context,
-                                        utils.getTranslated(context, "dora"),
+                                        utils.getTranslated(context, "kitty"),
                                         "",
                                         "",
                                         "",
@@ -535,7 +535,7 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
                                                 i,
                                                 buttons,
                                                 widget.playerSkin,
-                                                widget.doraSkin,
+                                                widget.kittySkin,
                                               ),
                                               height: double.maxFinite,
                                               width: double.maxFinite,
@@ -567,8 +567,8 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
                                     radius: 25,
                                   )
                                 : CircleAvatar(
-                                    child: getSvgImage(
-                                        imageName: "signin_Dora",
+                                    child: Image.asset(
+                                        "assets/images/kittyonly.png",
                                         width: 154,
                                         height: 172),
                                     radius: 25,
@@ -619,20 +619,17 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
                                 Row(
                                   children: [
                                     getSvgImage(
-                                      imageName: widget.doraSkin!,
+                                      imageName: widget.kittySkin!,
                                       height: 12,
                                     ),
-                                    // Image.asset(
-                                    //   widget.doraSkin!,
-                                    //   height: 12,
-                                    // ),
+
                                     Text(
                                       " : ${utils.getTranslated(context, "sign")}",
                                     ),
                                   ],
                                 ),
                                 Text(
-                                  utils.getTranslated(context, "dora"),
+                                  utils.getTranslated(context, "kitty"),
                                   style: TextStyle(color: white),
                                 ),
                               ],
@@ -641,8 +638,8 @@ class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity>
                               padding: const EdgeInsets.only(left: 8.0),
                               child: CircleAvatar(
                                 backgroundColor: Colors.transparent,
-                                child: getSvgImage(
-                                    imageName: 'signin_Dora',
+                                child: Image.asset(
+                                    'assets/images/kittyonly.png',
                                     width: 154,
                                     height: 137),
                                 radius: 25,

@@ -101,7 +101,7 @@ class _LoginWithEmailState extends State<LoginWithEmail> {
     return Container(
       alignment: Alignment.bottomCenter,
       height: MediaQuery.of(context).size.height * 0.35,
-      child: getSvgImage(imageName: "signin_Dora", width: 154, height: 172),
+      child: Image.asset("assets/images/Kitty.png", width: 154, height: 172),
     );
   }
 

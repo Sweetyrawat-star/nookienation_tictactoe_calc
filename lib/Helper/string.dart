@@ -215,47 +215,47 @@ Generated using Free Privacy Policy Generator
 ''';
 
 final Map userSkin = {
-  "DORA Classic": {
+  "KITTY Classic": {
     'userSkin': "cross_skin",
     'opponentSkin': "circle_skin",
     'price': 0
   },
-  "DORA Plus": {
+  "KITTY Plus": {
     'userSkin': "plus_skin",
     'opponentSkin': "circle_skin",
     'price': 100
   },
-  "DORA Square": {
+  "KITTY Square": {
     'userSkin': "square_skin",
     'opponentSkin': "circle_skin",
     'price': 150
   },
-  "DORA Polygon": {
+  "KITTY Polygon": {
     'userSkin': "polygon_skin",
     'opponentSkin': "cross_skin",
     'price': 150
   },
-  "DORA Hexagon": {
+  "KITTY Hexagon": {
     'userSkin': "hexagon_skin",
     'opponentSkin': "cross_skin",
     'price': 200
   },
-  "DORA Octagon": {
+  "KITTY Octagon": {
     'userSkin': "octagon_skin",
     'opponentSkin': "circle_skin",
     'price': 15000
   },
-  "DORA Triangle": {
+  "KITTY Triangle": {
     'userSkin': "triangle_skin",
     'opponentSkin': "circle_skin",
     'price': 150
   },
-  "DORA Diamond": {
+  "KITTY Diamond": {
     'userSkin': "diamond_skin",
     'opponentSkin': "circle_skin",
     'price': 150
   },
-  "DORA Offer": {
+  "KITTY Offer": {
     'userSkin': "cross_skin",
     'opponentSkin': "octagon_skin",
     'price': 0

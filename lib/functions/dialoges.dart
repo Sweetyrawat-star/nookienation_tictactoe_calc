@@ -62,8 +62,8 @@ class Dialoge {
                                       borderRadius:
                                           BorderRadius.circular(50)),
                                   child: (pic == ""
-                                      ? getSvgImage(
-                                          imageName: 'dora_win',
+                                      ? Image.asset(
+                                          "assets/images/kittyonly.png",
                                           width: double.maxFinite,
                                           height: double.maxFinite,
                                           fit: BoxFit.fill)

@@ -37,7 +37,7 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      getSignInDora(),
+                      getSignInKitty(),
                       SizedBox(
                         height: 30.0,
                       ),
@@ -90,11 +90,11 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
     );
   }
 
-  Widget getSignInDora() {
+  Widget getSignInKitty() {
     return Container(
       alignment: Alignment.bottomCenter,
       height: MediaQuery.of(context).size.height * 0.35,
-      child: getSvgImage(imageName: "signin_Dora", width: 154, height: 172),
+      child: Image.asset("assets/images/kittytext.png", width: 154, height: 172),
     );
   }
 

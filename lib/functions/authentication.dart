@@ -34,7 +34,7 @@ class Auth {
       await value.user!.updatePhotoURL(profilepic);
       var model = CreateUser(matchWon: 0, matchplayed: 0, profilePic: profilepic, username: username, userid: value.user!.uid, type: "GUEST");
       FirebaseDatabase.instance.ref().child("users").child(value.user!.uid).set(model.map()).then((a) async {
-        FirebaseDatabase.instance.ref().child("userSkins").child(value.user!.uid).push().set({"itemid": "DORA Classic", "itemo": defaultOskin, "itemx": defaultXskin, "selectedStatus": "Active"});
+        FirebaseDatabase.instance.ref().child("userSkins").child(value.user!.uid).push().set({"itemid": "KITTY Classic", "itemo": defaultOskin, "itemx": defaultXskin, "selectedStatus": "Active"});
 
         localValue.setSkinValue("user_skin", defaultXskin);
         localValue.setSkinValue("opponent_skin", defaultOskin);
@@ -238,7 +238,7 @@ class Auth {
             .child("userSkins")
             .child(FirebaseAuth.instance.currentUser!.uid)
             .push()
-            .set({"itemid": "DORA Classic", "itemo": defaultOskin, "itemx": defaultXskin, "selectedStatus": "Active"});
+            .set({"itemid": "KITTY Classic", "itemo": defaultOskin, "itemx": defaultXskin, "selectedStatus": "Active"});
       }
 
       //Remove History of guest user, if user moving to Email login

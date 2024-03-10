@@ -843,7 +843,7 @@ class _MultiplayerScreenActivityState extends State<MultiplayerScreenActivity> {
   returnImage(i) {
     if (istimerCompleted) {
       if (buttons[i]["player"] == whoseTimeout) {
-        return "dora_timeout";
+        return "assets/images/kittyonly.png";
       } else {
         return widget.imageo;
       }
@@ -853,14 +853,14 @@ class _MultiplayerScreenActivityState extends State<MultiplayerScreenActivity> {
         winGame != null &&
         winGame! &&
         (i == winVar1 || i == winVar2 || i == winVar3))
-      return "dora_win";
+      return "assets/images/kittyonly.png";
     else if (winVar1 != null &&
         winVar2 != null &&
         winVar3 != null &&
         winGame != null &&
         !winGame! &&
         (i == winVar1 || i == winVar2 || i == winVar3))
-      return "dora_lose";
+      return "assets/images/kittyonly.png";
     else if (buttons[i]["player"] == "player1" && buttons[i]["player"] != "0") {
       if (player1Id == _auth.currentUser!.uid) {
         return widget.imagex;
@@ -1256,8 +1256,8 @@ class _MultiplayerScreenActivityState extends State<MultiplayerScreenActivity> {
                               : Padding(
                                   padding: EdgeInsets.all(
                                       MediaQuery.of(context).size.width * 0.05),
-                                  child: getSvgImage(
-                                    imageName: returnImage(i),
+                                  child: Image.asset(
+                                     returnImage(i),
                                     height: double.maxFinite,
                                     width: double.maxFinite,
                                     fit: BoxFit.fill,

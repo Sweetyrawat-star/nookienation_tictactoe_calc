@@ -111,8 +111,8 @@ class HowToPlay extends StatelessWidget {
                   ),
                 ),
               ),
-              getSvgImage(
-                  imageName: "dora_instructor", width: 131, height: 146),
+              Image.asset(
+                  "assets/images/Kitty.png", width: 131, height: 146),
             ],
           ),
         ],
