@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       decoration:BoxDecoration(
-        image: DecorationImage(image: AssetImage("assets/images/splashLogo.png"),fit: BoxFit.fill),
+        color: Colors.white,
       ),
       child: Column(
         children: [
@@ -42,19 +42,14 @@ class _SplashScreenState extends State<SplashScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                   "assets/images/nookienation.png",
-                  width: 194,
-                  height: 194,
-                ),
-                Image.asset(
-                  "assets/images/kitty.png",
-                  width: 194,
-                  height: 194,
+                   "assets/images/splashscreen.png",
+                  width: 250,
+                  height: 250,
                 ),
               ],
             ),
           ),
-          Container(
+         /* Container(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).size.height * 0.1),
             child: Text(
@@ -62,9 +57,9 @@ class _SplashScreenState extends State<SplashScreen> {
               style: Theme.of(context)
                   .textTheme
                   .headlineMedium!
-                  .copyWith(fontFamily: 'DISPLATTER', color: white),
+                  .copyWith(fontFamily: 'DISPLATTER', color: red),
             ),
-          )
+          )*/
         ],
       ),
     ));

@@ -339,15 +339,42 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                   padding: EdgeInsets.only(
                       bottom: MediaQuery.of(context).size.height * 0.05),
                   width: MediaQuery.of(context).size.width / 2,
-                  child: SlideTransition(
-                    position: doraAnimation,
-                    child: getSvgImage(
-                      imageName: "welcome_dora",
-                      height: 289,
-                      width: 191,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left:15.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SlideTransition(
+                          position: doraAnimation,
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: SizedBox(
+                              height: 120,
+                              width: 120,
+                              child: Image.asset(
+                                "assets/images/nookienationlogo.png",
+                              //  "assets/images/Kitty.png",
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        SlideTransition(
+                          position: doraAnimation,
+                          child: Image.asset(
+                           // "assets/images/kittytext.png",
+                              "assets/images/Kitty.png",
+                            height: 130,
+                            width: 191,
+                          ),
+                        ),
+
+                      ],
                     ),
                   ),
                 ),
+
                 GestureDetector(
                   onVerticalDragUpdate: (details) async {
                     int sensitivity = 8;

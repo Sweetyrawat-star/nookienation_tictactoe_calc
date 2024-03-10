@@ -42,6 +42,7 @@ class _AuthOptionsScreenState extends State<Login> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
+        padding: EdgeInsets.only(top: 70),
         decoration: utils.gradBack(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -49,12 +50,15 @@ class _AuthOptionsScreenState extends State<Login> {
             Container(
               alignment: Alignment.bottomCenter,
               height: MediaQuery.of(context).size.height * 0.4,
-              child: getSvgImage(
-                imageName: "signin_Dora",
-                width: 154,
-                height: 172,
+              child: Image.asset(
+                "assets/images/Kitty.png",
+               //"assets/images/kittytext.png",
+                width: 300,
+                height: 300,
               ),
             ),
+            SizedBox(height: 50,),
+            /*
             Container(
               padding: EdgeInsets.symmetric(
                   vertical: MediaQuery.of(context).size.height * 0.1),
@@ -65,7 +69,7 @@ class _AuthOptionsScreenState extends State<Login> {
                     .headlineLarge!
                     .copyWith(fontFamily: 'DISPLATTER', color: white),
               ),
-            ),
+            ),*/
             Platform.isIOS
                 ? Container(
                     height: MediaQuery.of(context).size.height * 0.06,
