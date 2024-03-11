@@ -200,7 +200,7 @@ class _CalculatorState extends State<Calculator> {
                         height: 5,
                       ),
                       getRow('AC', 'CE', '%', '/'),
-                      getRow('1', '2', '3', '*'),
+                      getRow('1', '2', '3', 'x'),
                       getRow('4', '5', '6', '-'),
                       getRow('7', '8', '9', '+'),
                       getRow('00', '0', '.', '='),
