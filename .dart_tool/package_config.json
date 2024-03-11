@@ -80,6 +80,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "auto_size_text",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/auto_size_text-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -162,6 +168,12 @@
       "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.6",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "expressions",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/expressions-0.2.5+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "fake_async",
@@ -279,15 +291,21 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///Users/sweetyrawat/fvm/versions/3.13.5/packages/flutter",
+      "rootUri": "file:///Users/sweetyrawat/Documents/flutter/packages/flutter",
       "packageUri": "lib/",
-      "languageVersion": "3.3"
+      "languageVersion": "3.2"
     },
     {
       "name": "flutter_cache_manager",
       "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/flutter_cache_manager-3.3.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_grid_button",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/flutter_grid_button-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "flutter_inapp_purchase",
@@ -303,7 +321,7 @@
     },
     {
       "name": "flutter_localizations",
-      "rootUri": "file:///Users/sweetyrawat/fvm/versions/3.13.5/packages/flutter_localizations",
+      "rootUri": "file:///Users/sweetyrawat/Documents/flutter/packages/flutter_localizations",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -314,6 +332,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "flutter_simple_calculator",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/flutter_simple_calculator-2.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "flutter_svg",
       "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/flutter_svg-2.0.10+1",
       "packageUri": "lib/",
@@ -321,13 +345,13 @@
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///Users/sweetyrawat/fvm/versions/3.13.5/packages/flutter_test",
+      "rootUri": "file:///Users/sweetyrawat/Documents/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
     {
       "name": "flutter_web_plugins",
-      "rootUri": "file:///Users/sweetyrawat/fvm/versions/3.13.5/packages/flutter_web_plugins",
+      "rootUri": "file:///Users/sweetyrawat/Documents/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -477,21 +501,21 @@
     },
     {
       "name": "leak_tracker",
-      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/leak_tracker-10.0.4",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/leak_tracker-10.0.0",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.1"
     },
     {
       "name": "leak_tracker_flutter_testing",
-      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-3.0.3",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/leak_tracker_flutter_testing-2.0.1",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.1"
     },
     {
       "name": "leak_tracker_testing",
-      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/leak_tracker_testing-3.0.1",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/leak_tracker_testing-2.0.1",
       "packageUri": "lib/",
-      "languageVersion": "3.2"
+      "languageVersion": "3.1"
     },
     {
       "name": "matcher",
@@ -513,7 +537,7 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/meta-1.12.0",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/meta-1.11.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -620,6 +644,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "quiver",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/quiver-3.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "rxdart",
       "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/rxdart-0.27.7",
       "packageUri": "lib/",
@@ -681,7 +711,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///Users/sweetyrawat/fvm/versions/3.13.5/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///Users/sweetyrawat/Documents/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     },
@@ -741,7 +771,7 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/test_api-0.7.0",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/test_api-0.6.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -849,7 +879,7 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/vm_service-14.0.0",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/vm_service-13.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -920,7 +950,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-03-10T09:18:37.903565Z",
+  "generated": "2024-03-11T06:49:27.829102Z",
   "generator": "pub",
-  "generatorVersion": "3.4.0-212.0.dev"
+  "generatorVersion": "3.3.0"
 }
