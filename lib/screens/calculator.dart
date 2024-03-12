@@ -209,8 +209,8 @@ class _CalculatorState extends State<Calculator> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       SizedBox(height: 5,),
-                      getRow('AC', 'CE', '%', '/'),
-                      getRow('1', '2', '3', '*'),
+                      getRow('AC', 'CE', '%', '÷'),
+                      getRow('1', '2', '3', '×'),
                       getRow('4', '5', '6', '-'),
                       getRow('7', '8', '9', '+'),
                       getRow('00', '0', '.', '='),
