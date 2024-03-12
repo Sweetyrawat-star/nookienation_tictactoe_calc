@@ -21,9 +21,14 @@ class _CalculatorState extends State<Calculator> {
     });
   }
 
-  Widget getRow(String text1, String text2, String text3, String text4) {
+
+  Widget getRow(
+      String text1,
+      String text2,
+      String text3,
+      String text4) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         RawMaterialButton(
           onPressed: () {
@@ -43,7 +48,8 @@ class _CalculatorState extends State<Calculator> {
             style: TextStyle(
                 color: getTextColor(text1),
                 fontSize: 30,
-                fontWeight: FontWeight.bold),
+                fontWeight: FontWeight.bold
+            ),
           ),
           padding: EdgeInsets.all(20.0),
           shape: CircleBorder(),
@@ -67,7 +73,8 @@ class _CalculatorState extends State<Calculator> {
             style: TextStyle(
                 color: getTextColor(text2),
                 fontSize: 30,
-                fontWeight: FontWeight.bold),
+                fontWeight: FontWeight.bold
+            ),
           ),
           padding: EdgeInsets.all(20.0),
           shape: CircleBorder(),
@@ -83,7 +90,8 @@ class _CalculatorState extends State<Calculator> {
             style: TextStyle(
                 color: getTextColor(text3),
                 fontSize: 30,
-                fontWeight: FontWeight.bold),
+                fontWeight: FontWeight.bold
+            ),
           ),
           padding: EdgeInsets.all(20.0),
           shape: CircleBorder(),
@@ -94,22 +102,35 @@ class _CalculatorState extends State<Calculator> {
               Parser parser = Parser();
               Expression expression = parser.parse(inputUser);
               ContextModel contextModel = ContextModel();
-              double eval =
-                  expression.evaluate(EvaluationType.REAL, contextModel);
+              double eval = expression.evaluate(EvaluationType.REAL, contextModel);
+              // Check if the result is an integer
+              if (eval % 1 == 0) {
+                // If it's an integer, convert it to an integer
+                result = eval.toInt().toString();
+              } else {
+                // If it's not an integer, display it as a double
+                result = eval.toString();
+              }
 
               setState(() {
-                result = eval.toString();
+                // Set the result based on the condition
+                result = result;
               });
+
             } else {
               buttonPressed(text4);
             }
+
           },
           elevation: 2.0,
           fillColor: secondarySelectedColor,
           child: Text(
             text4,
             style: TextStyle(
-                fontSize: 40, color: white, fontWeight: FontWeight.bold),
+              fontSize: 40,
+              color: white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           padding: EdgeInsets.all(15.0),
           shape: CircleBorder(),
@@ -143,70 +164,57 @@ class _CalculatorState extends State<Calculator> {
                     ),
               Expanded(
                 flex: 35,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Text(
-                            inputUser,
-                            style: TextStyle(
-                              color: grey,
-                              fontSize: 40,
-                            ),
-                            textAlign: TextAlign.end,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.start,
                         children: [
-                          /*   Text(
-                            '=',
-                            style: TextStyle(
-                              color: grey,
-                              fontSize: 80,
-                            ),
-                          ),*/
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(10),
                             child: Text(
-                              result,
+                              inputUser,
                               style: TextStyle(
-                                color: primaryColor,
-                                fontSize: 70,
+                                color: grey,
+                                fontSize:  inputUser.length<15?40:inputUser.length <=25?16:12,
                               ),
+                              textAlign: TextAlign.end,
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                      Padding(
+                        padding: EdgeInsets.all(8),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            result,
+                            style: TextStyle(
+                              color: primaryColor,
+                              fontSize: 50,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Expanded(
-                flex: 65,
+                flex: 75,
                 child: Container(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SizedBox(
-                        height: 5,
-                      ),
-                      getRow('AC', 'CE', '%', '÷'),
-                      getRow('1', '2', '3', '×'),
+                      SizedBox(height: 5,),
+                      getRow('AC', 'CE', '%', '/'),
+                      getRow('1', '2', '3', '*'),
                       getRow('4', '5', '6', '-'),
                       getRow('7', '8', '9', '+'),
                       getRow('00', '0', '.', '='),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      ),
+                      Padding(padding: EdgeInsets.fromLTRB(0, 10, 0, 0),),
                     ],
                   ),
                 ),
@@ -254,5 +262,6 @@ class _CalculatorState extends State<Calculator> {
     } else {
       return white;
     }
+
   }
 }
