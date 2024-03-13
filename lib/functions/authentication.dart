@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:nookienation_tictactoe_calc/functions/gameHistory.dart';
 import 'package:the_apple_sign_in/the_apple_sign_in.dart' as app;
-
 
 import '../Helper/color.dart';
 import '../Helper/constant.dart';
@@ -32,15 +30,37 @@ class Auth {
 
       await value.user!.updateDisplayName(username);
       await value.user!.updatePhotoURL(profilepic);
-      var model = CreateUser(matchWon: 0, matchplayed: 0, profilePic: profilepic, username: username, userid: value.user!.uid, type: "GUEST");
-      FirebaseDatabase.instance.ref().child("users").child(value.user!.uid).set(model.map()).then((a) async {
-        FirebaseDatabase.instance.ref().child("userSkins").child(value.user!.uid).push().set({"itemid": "KITTY Classic", "itemo": defaultOskin, "itemx": defaultXskin, "selectedStatus": "Active"});
+      var model = CreateUser(
+          matchWon: 0,
+          matchplayed: 0,
+          profilePic: profilepic,
+          username: username,
+          userid: value.user!.uid,
+          type: "GUEST");
+      FirebaseDatabase.instance
+          .ref()
+          .child("users")
+          .child(value.user!.uid)
+          .set(model.map())
+          .then((a) async {
+        FirebaseDatabase.instance
+            .ref()
+            .child("userSkins")
+            .child(value.user!.uid)
+            .push()
+            .set({
+          "itemid": "KITTY Classic",
+          "itemo": defaultOskin,
+          "itemx": defaultXskin,
+          "selectedStatus": "Active"
+        });
 
         localValue.setSkinValue("user_skin", defaultXskin);
         localValue.setSkinValue("opponent_skin", defaultOskin);
         await utils.setUserLoggedIn("isLoggedIn", true);
 
-        Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil('/home', (route) => false);
       });
     });
   }
@@ -55,36 +75,77 @@ class Auth {
     }
   }
 
-  static Future signin(context, fromAnonymous, platform, {coins, matchplayed, matchwon, guestUserID, score, email, password, username}) async {
+  static Future signin(context, fromAnonymous, platform,
+      {coins,
+      matchplayed,
+      matchwon,
+      guestUserID,
+      score,
+      email,
+      password,
+      username}) async {
     var credential, displayName, user;
     Utils localValue = Utils();
     if (platform == "Android" && email == "" && password == "") {
       try {
         GoogleSignIn signin = GoogleSignIn();
-        user = await signin.signIn().then((value) async {
+        await signin.signIn().then((value) async {
           if (value != null) {
             await utils.setUserLoggedIn("isLoggedIn", true);
             displayName = signin.currentUser!.displayName;
             Dialoge.loading(context);
-            return value;
+
+            final GoogleSignInAuthentication authData =
+                await value.authentication;
+
+            if (authData.accessToken != null && authData.idToken != null) {
+              OAuthCredential creds = await GoogleAuthProvider.credential(
+                  accessToken: authData.accessToken, idToken: authData.idToken);
+              if (creds.idToken != null && creds.accessToken != null) {
+                await FirebaseAuth.instance
+                    .signInWithCredential(creds)
+                    .then((value) {
+
+                  localValue.setSkinValue("user_skin", defaultXskin);
+                  localValue.setSkinValue("opponent_skin", defaultOskin);
+                }).whenComplete(() {
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil('/home', (route) => false);
+                });
+              } else {
+                Navigator.of(context).pop();
+                utils.setSnackbar(
+                    context, utils.getTranslated(context, "error"));
+              }
+            } else {
+              Navigator.of(context).pop();
+              utils.setSnackbar(context, utils.getTranslated(context, "error"));
+            }
           }
         });
-        var googleAuth = await user.authentication;
-        credential = GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
-        await FirebaseAuth.instance.signInWithCredential(credential).then((value) {
-          Future.delayed(Duration(seconds: 2)).then((value) {
-            localValue.setSkinValue("user_skin", defaultXskin);
-            localValue.setSkinValue("opponent_skin", defaultOskin);
-            Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
-          });
-        });
+        // var googleAuth = await user.authentication;
+        // credential = GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+        // await FirebaseAuth.instance.signInWithCredential(credential).then((value) {
+        //   Future.delayed(Duration(seconds: 2)).then((value) {
+        //     localValue.setSkinValue("user_skin", defaultXskin);
+        //     localValue.setSkinValue("opponent_skin", defaultOskin);
+        //     Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
+        //   });
+        // });
       } catch (e) {}
-    } else if (email != "" && password != "" && username != "" && email != null && password != null && username != null) {
+    } else if (email != "" &&
+        password != "" &&
+        username != "" &&
+        email != null &&
+        password != null &&
+        username != null) {
       //create user with email, password and username
       try {
         FirebaseAuth _auth = FirebaseAuth.instance;
 
-        user = await _auth.createUserWithEmailAndPassword(email: email, password: password).then((value) async {
+        user = await _auth
+            .createUserWithEmailAndPassword(email: email, password: password)
+            .then((value) async {
           await value.user!.sendEmailVerification().then((value) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
@@ -95,7 +156,8 @@ class Auth {
               backgroundColor: white,
               elevation: 1.0,
             ));
-            Navigator.of(context).pushReplacement(CupertinoPageRoute(builder: (context) => LoginWithEmail()));
+            Navigator.of(context).pushReplacement(
+                CupertinoPageRoute(builder: (context) => LoginWithEmail()));
           });
 
           //Dialoge.loading(context);
@@ -110,11 +172,14 @@ class Auth {
       try {
         var _auth = FirebaseAuth.instance;
 
-        user = await _auth.signInWithEmailAndPassword(email: email, password: password).then((value) async {
+        user = await _auth
+            .signInWithEmailAndPassword(email: email, password: password)
+            .then((value) async {
           if (value.user!.emailVerified) {
             await utils.setUserLoggedIn("isLoggedIn", true);
 
-            Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/home', (route) => false);
           } else {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
@@ -145,7 +210,8 @@ class Auth {
       }
     } else if (platform == "IOS") {
       final _firebaseAuth = FirebaseAuth.instance;
-      final app.AuthorizationResult result = await app.TheAppleSignIn.performRequests([
+      final app.AuthorizationResult result =
+          await app.TheAppleSignIn.performRequests([
         user = app.AppleIdRequest(requestedScopes: [
           app.Scope.email,
           app.Scope.fullName,
@@ -164,17 +230,24 @@ class Auth {
           final oAuthProvider = OAuthProvider('apple.com');
           credential = oAuthProvider.credential(
             idToken: String.fromCharCodes(appleIdCredential!.identityToken!),
-            accessToken: String.fromCharCodes(appleIdCredential.authorizationCode!),
+            accessToken:
+                String.fromCharCodes(appleIdCredential.authorizationCode!),
           );
-          final authResult = await _firebaseAuth.signInWithCredential(credential);
+          final authResult =
+              await _firebaseAuth.signInWithCredential(credential);
 
           if (authResult.additionalUserInfo!.isNewUser) {
             final user = authResult.user!;
 
-            final String givenName = appleIdCredential.fullName?.givenName ?? "";
-            final String familyName = appleIdCredential.fullName?.familyName ?? "";
+            final String givenName =
+                appleIdCredential.fullName?.givenName ?? "";
+            final String familyName =
+                appleIdCredential.fullName?.familyName ?? "";
 
-            await user.updateDisplayName((givenName.isEmpty && familyName.isEmpty) ? "Your name" : "$givenName $familyName");
+            await user.updateDisplayName(
+                (givenName.isEmpty && familyName.isEmpty)
+                    ? "Your name"
+                    : "$givenName $familyName");
             await user.reload();
             displayName = _firebaseAuth.currentUser!.displayName!;
           } else {
@@ -186,7 +259,8 @@ class Auth {
           Future.delayed(Duration(seconds: 2)).then((value) {
             localValue.setSkinValue("user_skin", defaultXskin);
             localValue.setSkinValue("opponent_skin", defaultOskin);
-            Navigator.of(context).pushNamedAndRemoveUntil('/home', (route) => false);
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/home', (route) => false);
           });
           break;
         case app.AuthorizationStatus.error:
@@ -208,7 +282,8 @@ class Auth {
             matchWon: matchwon,
             matchplayed: matchplayed,
             coin: coins,
-            profilePic: FirebaseAuth.instance.currentUser!.photoURL ?? guestProfilePic,
+            profilePic:
+                FirebaseAuth.instance.currentUser!.photoURL ?? guestProfilePic,
             userid: FirebaseAuth.instance.currentUser!.uid,
             score: score,
             type: "AUTHORIZED");
@@ -221,34 +296,58 @@ class Auth {
             username: displayName,
             matchWon: 0,
             matchplayed: 0,
-            profilePic: FirebaseAuth.instance.currentUser!.photoURL ?? guestProfilePic,
+            profilePic:
+                FirebaseAuth.instance.currentUser!.photoURL ?? guestProfilePic,
             userid: FirebaseAuth.instance.currentUser!.uid,
             type: "AUTHORIZED");
       }
 
       //check user is old or not
-      var isAlreadyInDb = await db.ref().child("users").child(FirebaseAuth.instance.currentUser!.uid).once();
+      var isAlreadyInDb = await db
+          .ref()
+          .child("users")
+          .child(FirebaseAuth.instance.currentUser!.uid)
+          .once();
 
       //if user is new to our app then set default skins
 
       if (isAlreadyInDb.snapshot.value == null) {
-        db.ref().child("users").child(FirebaseAuth.instance.currentUser!.uid).set(create.map());
+        db
+            .ref()
+            .child("users")
+            .child(FirebaseAuth.instance.currentUser!.uid)
+            .set(create.map());
         await db
             .ref()
             .child("userSkins")
             .child(FirebaseAuth.instance.currentUser!.uid)
             .push()
-            .set({"itemid": "KITTY Classic", "itemo": defaultOskin, "itemx": defaultXskin, "selectedStatus": "Active"});
+            .set({
+          "itemid": "KITTY Classic",
+          "itemo": defaultOskin,
+          "itemx": defaultXskin,
+          "selectedStatus": "Active"
+        });
       }
 
       //Remove History of guest user, if user moving to Email login
       if (guestUserID != null) {
-        DatabaseEvent historyOfGuest = await db.ref().child("gameHistory").child(guestUserID).child("played").once();
+        DatabaseEvent historyOfGuest = await db
+            .ref()
+            .child("gameHistory")
+            .child(guestUserID)
+            .child("played")
+            .once();
         if (historyOfGuest.snapshot.value != null) {
           Map.from(historyOfGuest.snapshot.value as Map)
             ..forEach((key, val) {
               History().update(
-                  uid: FirebaseAuth.instance.currentUser!.uid, date: val["playedDate"], gotcoin: val["gotCoin"], oppornentId: val["oppornentId"], status: val["playedStatus"], type: val["type"]);
+                  uid: FirebaseAuth.instance.currentUser!.uid,
+                  date: val["playedDate"],
+                  gotcoin: val["gotCoin"],
+                  oppornentId: val["oppornentId"],
+                  status: val["playedStatus"],
+                  type: val["type"]);
             });
         }
         Dialoge.removeChild("gameHistory", guestUserID);
@@ -258,7 +357,9 @@ class Auth {
       Utils localValue = Utils();
       DatabaseReference _userSkinRef;
       _userSkinRef = FirebaseDatabase.instance.ref().child("userSkins");
-      DatabaseEvent userSkins = await _userSkinRef.child(FirebaseAuth.instance.currentUser!.uid).once();
+      DatabaseEvent userSkins = await _userSkinRef
+          .child(FirebaseAuth.instance.currentUser!.uid)
+          .once();
       Map map = userSkins.snapshot.value as Map;
 
       map.forEach((key, value) {

@@ -167,7 +167,7 @@ class _ProfileBodyState extends State<Profile> {
                                       fontWeight: FontWeight.bold)),
                             ),
                             Text(
-                                _auth.currentUser!.email == null
+                                _auth.currentUser?.email == null
                                     ? ""
                                     : "${_auth.currentUser!.email}",
                                 style: Theme.of(context)
