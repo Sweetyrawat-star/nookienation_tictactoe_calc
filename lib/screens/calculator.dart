@@ -297,14 +297,15 @@ class _CalculatorState extends State<Calculator> {
     if (value == 'AC') {
       input = '';
       output = '';
-    } else if (value == '<') {
+    } else if (value == 'CE') {
       if (input.isNotEmpty) {
         input = input.substring(0, input.length - 1);
       }
     } else if (value == '=') {
       if (input.isNotEmpty) {
         var userInput = input;
-        userInput = input.replaceAll('X', '*');
+        userInput = input.replaceAll('X', '*'); // Replace 'X' with '*'
+        userInput = userInput.replaceAll('÷', '/'); // Replace '÷' with '/'
         Parser p = Parser();
         Expression expression = p.parse(userInput);
         ContextModel cm = ContextModel();
@@ -313,7 +314,6 @@ class _CalculatorState extends State<Calculator> {
         if (output.endsWith(".0")) {
           output = output.substring(0, output.length - 2);
         }
-      //  input = output;
         hideInput = true;
         outputSize = 52.0;
       }
@@ -325,6 +325,7 @@ class _CalculatorState extends State<Calculator> {
 
     setState(() {});
   }
+
 
   @override
   Widget build(BuildContext context) {
