@@ -266,11 +266,7 @@ class _CalculatorState extends State<Calculator> {
 
   }
 }*/
-import 'dart:convert';
 import 'dart:io';
-import 'dart:math';
-
-
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:nookienation_tictactoe_calc/Helper/color.dart';
@@ -317,7 +313,7 @@ class _CalculatorState extends State<Calculator> {
         if (output.endsWith(".0")) {
           output = output.substring(0, output.length - 2);
         }
-        input = output;
+      //  input = output;
         hideInput = true;
         outputSize = 52.0;
       }
@@ -356,31 +352,35 @@ class _CalculatorState extends State<Calculator> {
                 child: Container(
                     width: double.infinity,
                     padding: const EdgeInsets.all(12),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          hideInput ? '' : input,
-                          style: const TextStyle(
-                            fontSize: 48,
-                            color: Colors.white,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                         //   hideInput ? '' :
+                            input,
+                            style:  TextStyle(
+                              fontSize:  input.length<65?40:input.length <125?16:12,
+                              //48,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          output,
-                          style: TextStyle(
-                            fontSize: outputSize,
-                            color: Colors.white.withOpacity(0.7),
+                          const SizedBox(
+                            height: 20,
                           ),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        )
-                      ],
+                          Text(
+                            output,
+                            style: TextStyle(
+                              fontSize: outputSize,
+                              color: Colors.black.withOpacity(0.7),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          )
+                        ],
+                      ),
                     )
                 )
             ),
