@@ -525,13 +525,13 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 children: [
                   Text(
                     _expression,
-                    style: TextStyle(fontSize: 24.0),
+                    style: TextStyle(fontSize: 24.0, color: Colors.black,),
                   ),
                   SizedBox(height: 8.0),
                   Text(
                     _result,
                     style:
-                        TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold),
+                        TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold, color: Colors.black,),
                   ),
                 ],
               ),
