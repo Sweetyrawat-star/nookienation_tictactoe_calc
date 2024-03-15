@@ -336,17 +336,17 @@ class _CalculatorState extends State<Calculator> {
           children: [
             Platform.isAndroid
                 ? IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  )
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
                 : BackButton(
-                    color: white,
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
+              color: white,
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
             //Input and output area
             Expanded(
                 child: Container(
@@ -364,8 +364,8 @@ class _CalculatorState extends State<Calculator> {
                               fontSize: input.length < 65
                                   ? 40
                                   : input.length < 125
-                                      ? 16
-                                      : 12,
+                                  ? 16
+                                  : 12,
                               //48,
                               color: Colors.black,
                             ),
@@ -425,24 +425,24 @@ class _CalculatorState extends State<Calculator> {
   Widget button({text, tColor = Colors.white, buttonBGcolor = buttonColor}) {
     return Expanded(
         child: Container(
-      margin: const EdgeInsets.all(8),
-      child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            shape:
+          margin: const EdgeInsets.all(8),
+          child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            backgroundColor: buttonBGcolor,
-            padding: const EdgeInsets.all(22),
-          ),
-          onPressed: () => onButtonClick(text),
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 18,
-              color: tColor,
-              fontWeight: FontWeight.bold,
-            ),
-          )),
-    ));
+                backgroundColor: buttonBGcolor,
+                padding: const EdgeInsets.all(22),
+              ),
+              onPressed: () => onButtonClick(text),
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: tColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              )),
+        ));
   }
 }
 
@@ -482,8 +482,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   }
 
   void _evaluateExpression() {
-    // Replace % with /100 to handle percentages directly
-    String modifiedExpression = _expression.replaceAll('%', '/100');
+    String modifiedExpression = _expression.replaceAll('X', '*').replaceAll('÷', '/');
+    modifiedExpression = modifiedExpression.replaceAll('%', '/100'); // Replace % with /100 to handle percentages directly
     Parser p = Parser();
     Expression exp = p.parse(modifiedExpression);
     ContextModel cm = ContextModel();
@@ -495,7 +495,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
   void _updateResult() {
     try {
-      String modifiedExpression = _expression.replaceAll('%', '/100');
+      String modifiedExpression = _expression.replaceAll('X', '*').replaceAll('÷', '/');
+      modifiedExpression = modifiedExpression.replaceAll('%', '/100'); // Replace % with /100 to handle percentages directly
       Parser p = Parser();
       Expression exp = p.parse(modifiedExpression);
       ContextModel cm = ContextModel();
@@ -506,31 +507,54 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: ListView(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Platform.isAndroid
+              ? IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          )
+              : BackButton(
+            color: white,
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
           Expanded(
             child: Container(
               padding: EdgeInsets.all(16.0),
               alignment: Alignment.centerRight,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    _expression,
-                    style: TextStyle(fontSize: 24.0, color: Colors.black,),
-                  ),
-                  SizedBox(height: 8.0),
-                  Text(
-                    _result,
-                    style:
-                        TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold, color: Colors.black,),
-                  ),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      _expression,
+                      style: TextStyle(
+                          fontSize: _expression.length < 65
+                              ? 30
+                              : _expression.length < 125
+                              ? 16
+                              : 12,
+                          color: Colors.black
+                      ),),
+                    SizedBox(height: 8.0),
+                    Text(
+                      _result,
+                      style:
+                      TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold, color: Colors.black,),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -591,3 +615,4 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         ));
   }
 }
+
