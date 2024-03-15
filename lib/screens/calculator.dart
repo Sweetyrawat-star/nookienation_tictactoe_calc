@@ -510,10 +510,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text('Calculator'),
-      ),
-      body: Column(
+      body: ListView(
         children: [
           Expanded(
             child: Container(
@@ -537,39 +534,60 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               ),
             ),
           ),
-          GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 4,
-              children: [
-                'AC', 'CE', '%', '/',
-                '7', '8', '9', '*',
-                '4', '5', '6', '-',
-                '1', '2', '3', '+',
-                '00', '0', '.', '=', // Moved '=' to the last position
-              ]
-                  .map((text) => Expanded(
-                          child: Container(
-                        margin: const EdgeInsets.all(8),
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12)),
-                              backgroundColor: buttonColor,
-                              padding: const EdgeInsets.all(22),
-                            ),
-                            onPressed: () => _onButtonPressed(text),
-                            child: Text(
-                              text,
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )),
-                      )))
-                  .toList())
+          Row(children: [
+            button(text: 'AC', buttonBGcolor: grey, tColor: white),
+            button(text: 'CE', buttonBGcolor: grey, tColor: white),
+            button(text: '%', buttonBGcolor: grey, tColor: white),
+            button(text: '÷', buttonBGcolor: grey, tColor: white),
+          ]),
+          Row(children: [
+            button(text: '7'),
+            button(text: '8'),
+            button(text: '9'),
+            button(text: 'X', buttonBGcolor: grey, tColor: white),
+          ]),
+          Row(children: [
+            button(text: '4'),
+            button(text: '5'),
+            button(text: '6'),
+            button(text: '-', buttonBGcolor: grey, tColor: white),
+          ]),
+          Row(children: [
+            button(text: '1'),
+            button(text: '2'),
+            button(text: '3'),
+            button(text: '+', buttonBGcolor: grey, tColor: white),
+          ]),
+          Row(children: [
+            button(text: '00'),
+            button(text: '0'),
+            button(text: '.'),
+            button(text: '=', buttonBGcolor: orangecolor),
+          ]),
         ],
       ),
     );
+  }
+  Widget button({text, tColor = Colors.white, buttonBGcolor = buttonColor}) {
+    return Expanded(
+        child: Container(
+          margin: const EdgeInsets.all(8),
+          child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                backgroundColor: buttonBGcolor,
+                padding: const EdgeInsets.all(22),
+              ),
+              onPressed: () =>_onButtonPressed(text),
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: tColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              )),
+        ));
   }
 }
