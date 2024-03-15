@@ -326,7 +326,6 @@ class _CalculatorState extends State<Calculator> {
     setState(() {});
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -337,17 +336,17 @@ class _CalculatorState extends State<Calculator> {
           children: [
             Platform.isAndroid
                 ? IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            )
+                    icon: Icon(Icons.arrow_back),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
                 : BackButton(
-              color: white,
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
+                    color: white,
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
             //Input and output area
             Expanded(
                 child: Container(
@@ -359,10 +358,14 @@ class _CalculatorState extends State<Calculator> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                         //   hideInput ? '' :
+                            //   hideInput ? '' :
                             input,
-                            style:  TextStyle(
-                              fontSize:  input.length<65?40:input.length <125?16:12,
+                            style: TextStyle(
+                              fontSize: input.length < 65
+                                  ? 40
+                                  : input.length < 125
+                                      ? 16
+                                      : 12,
                               //48,
                               color: Colors.black,
                             ),
@@ -382,43 +385,33 @@ class _CalculatorState extends State<Calculator> {
                           )
                         ],
                       ),
-                    )
-                )
-            ),
+                    ))),
             Row(children: [
-              button(
-                  text: 'AC', buttonBGcolor: grey, tColor: white),
-              button(
-                  text: 'CE', buttonBGcolor: grey, tColor: white),
-              button(
-                  text: '%', buttonBGcolor: grey, tColor: white),
-              button(
-                  text: '÷', buttonBGcolor: grey, tColor: white),
+              button(text: 'AC', buttonBGcolor: grey, tColor: white),
+              button(text: 'CE', buttonBGcolor: grey, tColor: white),
+              button(text: '%', buttonBGcolor: grey, tColor: white),
+              button(text: '÷', buttonBGcolor: grey, tColor: white),
             ]),
             Row(children: [
               button(text: '7'),
               button(text: '8'),
               button(text: '9'),
-              button(
-                  text: 'X', buttonBGcolor: grey, tColor: white),
+              button(text: 'X', buttonBGcolor: grey, tColor: white),
             ]),
             Row(children: [
               button(text: '4'),
               button(text: '5'),
               button(text: '6'),
-              button(
-                  text: '-', buttonBGcolor: grey, tColor: white),
+              button(text: '-', buttonBGcolor: grey, tColor: white),
             ]),
             Row(children: [
               button(text: '1'),
               button(text: '2'),
               button(text: '3'),
-              button(
-                  text: '+', buttonBGcolor: grey, tColor: white),
+              button(text: '+', buttonBGcolor: grey, tColor: white),
             ]),
             Row(children: [
-              button(
-                  text: '00'),
+              button(text: '00'),
               button(text: '0'),
               button(text: '.'),
               button(text: '=', buttonBGcolor: orangecolor),
@@ -432,24 +425,151 @@ class _CalculatorState extends State<Calculator> {
   Widget button({text, tColor = Colors.white, buttonBGcolor = buttonColor}) {
     return Expanded(
         child: Container(
-          margin: const EdgeInsets.all(8),
-          child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), backgroundColor: buttonBGcolor,
-                padding: const EdgeInsets.all(22),
-              ),
-              onPressed: () => onButtonClick(text),
-              child: Text(
-                text,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: tColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
+      margin: const EdgeInsets.all(8),
+      child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            backgroundColor: buttonBGcolor,
+            padding: const EdgeInsets.all(22),
           ),
-        )
+          onPressed: () => onButtonClick(text),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 18,
+              color: tColor,
+              fontWeight: FontWeight.bold,
+            ),
+          )),
+    ));
+  }
+}
+
+class CalculatorScreen extends StatefulWidget {
+  @override
+  _CalculatorScreenState createState() => _CalculatorScreenState();
+}
+
+class _CalculatorScreenState extends State<CalculatorScreen> {
+  String _expression = '';
+  String _result = '';
+
+  void _onButtonPressed(String text) {
+    setState(() {
+      if (text == 'AC') {
+        _expression = '';
+        _result = '';
+      } else if (text == 'CE') {
+        if (_expression.isNotEmpty) {
+          _expression = _expression.substring(0, _expression.length - 1);
+          if (_result.endsWith(".0")) {
+            setState(() {
+              _result = _result.substring(0, _result.length - 2);
+            });
+          }
+          setState(() {
+            _result = _result.substring(0, _result.length - 1);
+          });
+        }
+      } else if (text == '=') {
+        _evaluateExpression();
+      } else {
+        _expression += text;
+        _updateResult();
+      }
+    });
+  }
+
+  void _evaluateExpression() {
+    // Replace % with /100 to handle percentages directly
+    String modifiedExpression = _expression.replaceAll('%', '/100');
+    Parser p = Parser();
+    Expression exp = p.parse(modifiedExpression);
+    ContextModel cm = ContextModel();
+    double evalResult = exp.evaluate(EvaluationType.REAL, cm);
+    setState(() {
+      _result = evalResult.toString();
+    });
+  }
+
+  void _updateResult() {
+    try {
+      String modifiedExpression = _expression.replaceAll('%', '/100');
+      Parser p = Parser();
+      Expression exp = p.parse(modifiedExpression);
+      ContextModel cm = ContextModel();
+      double evalResult = exp.evaluate(EvaluationType.REAL, cm);
+      _result = evalResult.toString();
+    } catch (e) {
+      _result = '';
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('Calculator'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.all(16.0),
+              alignment: Alignment.centerRight,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    _expression,
+                    style: TextStyle(fontSize: 24.0),
+                  ),
+                  SizedBox(height: 8.0),
+                  Text(
+                    _result,
+                    style:
+                        TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          GridView.count(
+              shrinkWrap: true,
+              crossAxisCount: 4,
+              children: [
+                'AC', 'CE', '%', '/',
+                '7', '8', '9', '*',
+                '4', '5', '6', '-',
+                '1', '2', '3', '+',
+                '00', '0', '.', '=', // Moved '=' to the last position
+              ]
+                  .map((text) => Expanded(
+                          child: Container(
+                        margin: const EdgeInsets.all(8),
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12)),
+                              backgroundColor: buttonColor,
+                              padding: const EdgeInsets.all(22),
+                            ),
+                            onPressed: () => _onButtonPressed(text),
+                            child: Text(
+                              text,
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )),
+                      )))
+                  .toList())
+        ],
+      ),
     );
   }
 }

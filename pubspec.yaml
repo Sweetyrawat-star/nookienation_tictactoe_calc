@@ -58,6 +58,7 @@ dependencies:
   unity_ads_plugin: ^0.3.8
   flutter_svg: ^2.0.7
   math_expressions: ^2.3.0
+  flutter_simple_calculator: ^2.2.4
 
 dev_dependencies:
   flutter_test:

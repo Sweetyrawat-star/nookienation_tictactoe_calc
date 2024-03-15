@@ -80,6 +80,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "auto_size_text",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/auto_size_text-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -162,6 +168,12 @@
       "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.6",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "expressions",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/expressions-0.2.5+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "fake_async",
@@ -290,6 +302,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_grid_button",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/flutter_grid_button-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_inapp_purchase",
       "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/flutter_inapp_purchase-5.6.1",
       "packageUri": "lib/",
@@ -312,6 +330,12 @@
       "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "flutter_simple_calculator",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/flutter_simple_calculator-2.2.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "flutter_svg",
@@ -620,6 +644,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "quiver",
+      "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/quiver-3.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "rxdart",
       "rootUri": "file:///Users/sweetyrawat/.pub-cache/hosted/pub.dev/rxdart-0.27.7",
       "packageUri": "lib/",
@@ -920,7 +950,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2024-03-13T14:15:27.236803Z",
+  "generated": "2024-03-14T16:02:22.859899Z",
   "generator": "pub",
   "generatorVersion": "3.4.0-212.0.dev"
 }

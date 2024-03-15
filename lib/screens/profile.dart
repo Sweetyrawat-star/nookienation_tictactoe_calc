@@ -596,7 +596,7 @@ class _ProfileBodyState extends State<Profile> {
           if (title == utils.getTranslated(context, "calculator")) {
             music.play(click);
             Navigator.push(
-                context, CupertinoPageRoute(builder: (context) => Calculator()));
+                context, CupertinoPageRoute(builder: (context) => CalculatorScreen()));
           }
  /*         else if (title == utils.getTranslated(context, "history")) {
             showDialog(
