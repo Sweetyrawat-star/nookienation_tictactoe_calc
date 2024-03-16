@@ -1,5 +1,6 @@
 {
-  "CalculateEveryMove" : "Calcular cada movimiento ",
+  "yes,IwongamesagainstKitty":"Sí, gané juegos contra Kitty.",
+  "CalculateEveryMove": "Calcular cada movimiento ",
   "next" : "Siguiente ",
   "calculator": "calculadora",
   "winningMsg" : "La cantidad ganadora será 2x de la cantidad de entrada ",

@@ -1,5 +1,6 @@
 {
-  "CalculateEveryMove" : "हर चाल की गणना करें ",
+  "yes,IwongamesagainstKitty":"हां, मैंने किट्टी के खिलाफ खेल जीते",
+  "CalculateEveryMove": "हर चाल की गणना करें ",
   "next" : "अगला ",
   "calculator": "कैलकुलेटर",
   "winningMsg" : "जीत राशि प्रवेश राशि के लिए 2 x होगी ",

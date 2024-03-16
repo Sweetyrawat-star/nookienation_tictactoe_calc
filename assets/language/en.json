@@ -1,4 +1,5 @@
 {
+  "yes,IwongamesagainstKitty":"Yes, I won games against Kitty.",
   "CalculateEveryMove": "Calculate Every Move",
   "next": "Next",
   "winningMsg": "Winning amount will be 2x of entry amount",
@@ -61,7 +62,7 @@
   "error": "Error",
   "draw": "Draw",
   "cancle": "Cancel",
-  "Kitty": "Kitty",
+  "kitty": "Kitty",
   "howToPlayHeading": "How To Play?",
   "howToPlayContent": "The Player who succeeded in playing three respective marks in a Horizontal,Vertical or Diagonal row wins the game",
   "checkYourInternet": "Check network and try again.",
