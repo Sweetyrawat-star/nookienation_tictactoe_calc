@@ -9,6 +9,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:nookienation_tictactoe_calc/screens/calculator.dart';
+import 'package:nookienation_tictactoe_calc/screens/gamehistory.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -422,15 +423,14 @@ class _ProfileBodyState extends State<Profile> {
                               utils.getTranslated(context, "changeLanguage"),
                               "language_icon",
                               true),
-
-                          /*    getTile(utils.getTranslated(context, "playMoreGames"),
-                              "", false),*/
+                          getTile(utils.getTranslated(context, "playMoreGames"),
+                              "", false),
                           getTile(utils.getTranslated(context, "contactUs"),
                               "contactus_icon", true),
                           getTile(utils.getTranslated(context, "aboutUs"),
                               "aboutus_icon", true),
-                          /*    getTile(utils.getTranslated(context, "termCond"),
-                              "termscond_icon", true),*/
+                          getTile(utils.getTranslated(context, "termCond"),
+                              "termscond_icon", true),
                           getTile(utils.getTranslated(context, "privacy"),
                               "privacypolicy_icon", true),
                           getTile(
@@ -439,8 +439,8 @@ class _ProfileBodyState extends State<Profile> {
                               true),
                           getTile(utils.getTranslated(context, "rate"),
                               "rateus_icon", true),
-                          /*    getTile(utils.getTranslated(context, "share"),
-                              "share_app", true),*/
+                          getTile(utils.getTranslated(context, "share"),
+                              "share_app", true),
                           getTile(utils.getTranslated(context, "logout"),
                               "logout_icon", true),
                           getTile(utils.getTranslated(context, "deleteAccount"),
@@ -598,114 +598,20 @@ class _ProfileBodyState extends State<Profile> {
             Navigator.push(context,
                 CupertinoPageRoute(builder: (context) => CalculatorScreen()));
           } else if (title == utils.getTranslated(context, "history")) {
-            showDialog(
-                context: context,
-                builder: (context) {
-                  var color = secondaryColor;
-                  return Alert(
-                    title: Text(
-                      utils.getTranslated(
-                          context, "This is paid Feature Connect With Support"),
-                      style: TextStyle(color: white),
-                    ),
-                    isMultipleAction: true,
-                    defaultActionButtonName: utils.getTranslated(context, "ok"),
-                    onTapActionButton: () {},
-                    multipleAction: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20.0),
-                        child: TextButton(
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    secondarySelectedColor)),
-                            onPressed: () async {
-                              music.play(click);
-
-                              Navigator.pop(context);
-                            },
-                            child: Text(utils.getTranslated(context, "OK"),
-                                style: TextStyle(color: white))),
-                      ),
-                    ],
-                  );
-                });
-            //   await InternetAddress.lookup('google.com');
-            //  Navigator.of(context).push(
-            //   CupertinoPageRoute(
-            //       builder: (context) {
-            //         return GameHistory();
-            //       },
-            //       fullscreenDialog: true),
-            // );
+            await InternetAddress.lookup('google.com');
+            Navigator.of(context).push(
+              CupertinoPageRoute(
+                  builder: (context) {
+                    return GameHistory();
+                  },
+                  fullscreenDialog: true),
+            );
           } else if (title == utils.getTranslated(context, "shop")) {
-            showDialog(
-                context: context,
-                builder: (context) {
-                  var color = secondaryColor;
-                  return Alert(
-                    title: Text(
-                      utils.getTranslated(
-                          context, "This is paid Feature Connect With Support"),
-                      style: TextStyle(color: white),
-                    ),
-                    isMultipleAction: true,
-                    defaultActionButtonName: utils.getTranslated(context, "ok"),
-                    onTapActionButton: () {},
-                    multipleAction: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20.0),
-                        child: TextButton(
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    secondarySelectedColor)),
-                            onPressed: () async {
-                              music.play(click);
-
-                              Navigator.pop(context);
-                            },
-                            child: Text(utils.getTranslated(context, "OK"),
-                                style: TextStyle(color: white))),
-                      ),
-                    ],
-                  );
-                });
-
-            //  await InternetAddress.lookup('google.com');
-            //  Navigator.pushNamed(context, "/shop");
+            await InternetAddress.lookup('google.com');
+            Navigator.pushNamed(context, "/shop");
           } else if (title == utils.getTranslated(context, "skin")) {
-            showDialog(
-                context: context,
-                builder: (context) {
-                  var color = secondaryColor;
-                  return Alert(
-                    title: Text(
-                      utils.getTranslated(
-                          context, "This is paid Feature Connect With Support"),
-                      style: TextStyle(color: white),
-                    ),
-                    isMultipleAction: true,
-                    defaultActionButtonName: utils.getTranslated(context, "ok"),
-                    onTapActionButton: () {},
-                    multipleAction: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20.0),
-                        child: TextButton(
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    secondarySelectedColor)),
-                            onPressed: () async {
-                              music.play(click);
-
-                              Navigator.pop(context);
-                            },
-                            child: Text(utils.getTranslated(context, "OK"),
-                                style: TextStyle(color: white))),
-                      ),
-                    ],
-                  );
-                });
-            //  await InternetAddress.lookup('google.com');
-            // Navigator.of(context).pushNamed("/skin");
+            await InternetAddress.lookup('google.com');
+            Navigator.of(context).pushNamed("/skin");
           }
         } on SocketException catch (_) {
           var dialog = Dialoge();

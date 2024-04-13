@@ -260,12 +260,12 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
         elevation: 0,
         title: Coin(),
         actions: [
-          // getSvgImage(
-          //   imageName: "circle_skin",
-          //   height: 30,
-          //   width: 30,
-          //   fit: BoxFit.scaleDown,
-          // ),
+          getSvgImage(
+            imageName: "circle_skin",
+            height: 30,
+            width: 30,
+            fit: BoxFit.scaleDown,
+          ),
           Container(
             width: 60,
             alignment: Alignment.centerRight,
@@ -313,20 +313,19 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
         children: [
           Container(
             decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
                   Color(0xff4c3b6c),
                   Color(0xff584575),
                   Color(0xff4e3b6c),
                   Color(0xff6e416f),
                   Color(0xff754271),
                   Color(0xff794271),
-
-                  /*secondaryColor,
-      primaryColor,*/
-                ])),
+                ],
+              ),
+            ),
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Image.asset('assets/gifs/home_bac.gif', fit: BoxFit.cover),
@@ -355,7 +354,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                               height: 120,
                               width: 120,
                               child: Image.asset(
-                                "assets/images/Kitty.png",
+                                "assets/images/nookienationlogo.png",
                                 //  "assets/images/Kitty.png",
                               ),
                             ),
@@ -762,142 +761,6 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
       ),
     );
   }
-
-  /* selectPassNPlayDialog() {
-    return showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              backgroundColor: Colors.white,
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0))),
-              title: Center(
-                child: Text(
-                  utils.getTranslated(context, "passNplayDialoge"),
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleSmall!
-                      .copyWith(color: white),
-                ),
-              ),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Center(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color(0xff4c3b6c),
-                                Color(0xff584575),
-                                Color(0xff4e3b6c),
-                                Color(0xff6e416f),
-                                Color(0xff754271),
-                                Color(0xff794271),
-                              ]),
-                         ),
-                      child: TextField(
-                        controller: player1controller,
-                        style: const TextStyle(
-                          fontSize: 14,
-                        ),
-                        decoration: InputDecoration(
-                          prefixIcon: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: getSvgImage(
-                              imageName: userSkin,
-                              height: 10,
-                              width: 10,
-                            ),
-                          ),
-                          border: InputBorder.none,
-                          focusColor: white,
-                          hintText: utils.getTranslated(context, "playerName"),
-                          hintStyle: TextStyle(color: Colors.white),
-                          fillColor: white,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xff4c3b6c),
-                            Color(0xff584575),
-                            Color(0xff4e3b6c),
-                            Color(0xff6e416f),
-                            Color(0xff754271),
-                            Color(0xff794271),
-                          ]),
-                    ),
-                    child: TextField(
-                      controller: player2controller,
-                      style: const TextStyle(
-                        fontSize: 14,
-                      ),
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        focusColor: white,
-                        prefixIcon: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: getSvgImage(
-                            imageName: opponentSkin,
-                            height: 10,
-                            width: 10,
-                          ),
-                        ),
-                        hintText: utils.getTranslated(context, "playerName"),
-                        hintStyle: TextStyle(color: Colors.white),
-                        fillColor: white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              actions: [
-                ElevatedButton.icon(
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(secondarySelectedColor),
-                        shape: MaterialStateProperty.all(
-                            const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20.0))))),
-                    onPressed: () async {
-                      music.play(click);
-                      if (player1controller.text.isNotEmpty &&
-                          player2controller.text.isNotEmpty) {
-                        Navigator.of(context).pop();
-                        Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                                builder: (context) => PassNPLay(
-                                    "${utils.limitChar(player1controller.text.toString(), 7)}",
-                                    "${utils.limitChar(player2controller.text.toString(), 7)}",
-                                    userSkin,
-                                    opponentSkin)));
-                      }
-                    },
-                    icon: Icon(
-                      Icons.skip_next,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                    label: Text(
-                      utils.getTranslated(context, "start"),
-                      style: TextStyle(color: Colors.white, fontSize: 12),
-                    ))
-              ],
-            ));
-  }*/
 
   selectRoundDialog(int selected) {
     int round = noOfRoundDigit[0];
@@ -1426,7 +1289,7 @@ class _CoinState extends State<Coin> {
     return GestureDetector(
       onTap: () {
         if (!_auth.currentUser!.isAnonymous) {
-          //  Navigator.pushNamed(context, "/shop");
+          Navigator.pushNamed(context, "/shop");
         }
       },
       child: Chip(

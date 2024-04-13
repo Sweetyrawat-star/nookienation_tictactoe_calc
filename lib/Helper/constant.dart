@@ -21,7 +21,7 @@ final String interstitialAdID = Platform.isAndroid
     : "ios  interstitial ad id here";
 
 //unity ad setting
-//final String gameID =  Platform.isAndroid ? "place your android ad gameID  here":"place your android ad gameID  here";
+//final String gameID =  Platform.isAndroid ? "place your android ad gameID here":"place your android ad gameID here";
 
 // Example of unity ad ids
 final String gameID = Platform.isAndroid ? "4839511" : "4839510";

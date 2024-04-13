@@ -77,15 +77,15 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (didPop) {
         music.play(click);
         //if (mounted) Advertisement.showAd();
-        return Future.value(true);
       },
       child: Scaffold(
         backgroundColor: Colors.white,
-       /* appBar: AppBar(
+        appBar: AppBar(
           backgroundColor: primaryColor,
           elevation: 0.0,
           title: Row(
@@ -97,7 +97,13 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen> {
               const SizedBox(
                 width: 5,
               ),
-              Text(" ${utils.getTranslated(context, "leaderboard",)}",style: TextStyle(color: Colors.white),)
+              Text(
+                " ${utils.getTranslated(
+                  context,
+                  "leaderboard",
+                )}",
+                style: TextStyle(color: Colors.white),
+              )
             ],
           ),
           centerTitle: true,
@@ -106,9 +112,12 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen> {
                 onPressed: () {
                   showRankDescription(context);
                 },
-                icon: Icon(Icons.help,color: Colors.white,))
+                icon: Icon(
+                  Icons.help,
+                  color: Colors.white,
+                ))
           ],
-        ),*/
+        ),
         body: Stack(
           children: [
             Column(
@@ -116,74 +125,84 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen> {
                 Container(
                   height: MediaQuery.of(context).size.height * 0.23,
                   decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Color(0xff4c3b6c),
-                                Color(0xff584575),
-                                Color(0xff4e3b6c),
-                                Color(0xff6e416f),
-                                Color(0xff754271),
-                                Color(0xff794271),
-                              ]),
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color(0xff4c3b6c),
+                            Color(0xff584575),
+                            Color(0xff4e3b6c),
+                            Color(0xff6e416f),
+                            Color(0xff754271),
+                            Color(0xff794271),
+                          ]),
                       borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(40),
                           bottomRight: Radius.circular(40))),
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top:15.0),
+                        padding: const EdgeInsets.only(top: 15.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              children: [
-                                Platform.isAndroid
-                                    ? IconButton(
-                                  icon: Icon(
-                                    Icons.arrow_back,
-                                    color: white,
-                                    size: 25,
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                )
-                                    : IconButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  icon: Icon(
-                                    Icons.arrow_back_ios,
-                                    color: white,
-                                    size: 25,
-                                  ),
-                                )
-                              ],
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                getSvgImage(
-                                  imageName: 'leaderboard_white',
-                                ),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Text(" ${utils.getTranslated(context, "leaderboard",)}",style: TextStyle(color: Colors.white),)
-                              ],
-                            ),
+                            //TODO: Here Dount
 
-                            Row(
-                              children: [
-                                IconButton(
-                                    onPressed: () {
-                                      showRankDescription(context);
-                                    },
-                                    icon: Icon(Icons.help,color: Colors.white,))
-                              ],
-                            )
+                            // Row(
+                            //   children: [
+                            //     Platform.isAndroid
+                            //         ? IconButton(
+                            //             icon: Icon(
+                            //               Icons.arrow_back,
+                            //               color: white,
+                            //               size: 25,
+                            //             ),
+                            //             onPressed: () {
+                            //               Navigator.of(context).pop();
+                            //             },
+                            //           )
+                            //         : IconButton(
+                            //             onPressed: () {
+                            //               Navigator.pop(context);
+                            //             },
+                            //             icon: Icon(
+                            //               Icons.arrow_back_ios,
+                            //               color: white,
+                            //               size: 25,
+                            //             ),
+                            //           )
+                            //   ],
+                            // ),
+                            // Row(
+                            //   mainAxisSize: MainAxisSize.min,
+                            //   children: [
+                            //     getSvgImage(
+                            //       imageName: 'leaderboard_white',
+                            //     ),
+                            //     const SizedBox(
+                            //       width: 5,
+                            //     ),
+                            //     Text(
+                            //       " ${utils.getTranslated(
+                            //         context,
+                            //         "leaderboard",
+                            //       )}",
+                            //       style: TextStyle(color: Colors.white),
+                            //     )
+                            //   ],
+                            // ),
+                            // Row(
+                            //   children: [
+                            //     IconButton(
+                            //         onPressed: () {
+                            //           showRankDescription(context);
+                            //         },
+                            //         icon: Icon(
+                            //           Icons.help,
+                            //           color: Colors.white,
+                            //         ))
+                            //   ],
+                            // ),
                           ],
                         ),
                       ),
@@ -292,7 +311,7 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen> {
                                                 Container(
                                                   child: Padding(
                                                     padding: const EdgeInsets
-                                                            .symmetric(
+                                                        .symmetric(
                                                         vertical: 5,
                                                         horizontal: 5),
                                                     child: Center(
@@ -334,7 +353,7 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen> {
                                               decoration: BoxDecoration(
                                                 color: primaryColor,
                                                 borderRadius: const BorderRadius
-                                                        .horizontal(
+                                                    .horizontal(
                                                     left: Radius.circular(50),
                                                     right: Radius.circular(50)),
                                               ),

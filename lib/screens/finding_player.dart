@@ -49,7 +49,9 @@ class _FindingPlayerScreenState extends State<FindingPlayerScreen>
   bool isplaying = false;
   bool canUpdateUi = false;
   bool isCoinAndCountValueUpdated = false;
-  String oppMsg = findingOpp, img = "assets/images/kittyonly.png", btnTxt = "Cancel";
+  String oppMsg = findingOpp,
+      img = "assets/images/kittyonly.png",
+      btnTxt = "Cancel";
   String? imagex, imageo;
   late DatabaseReference _userSkinRef;
 
@@ -316,237 +318,234 @@ class _FindingPlayerScreenState extends State<FindingPlayerScreen>
     }
 
     return WillPopScope(
-        onWillPop: () async {
-          if (_temp != "") {
-            Dialoge.removeChild("Game", _temp);
-          }
+      onWillPop: () async {
+        if (_temp != "") {
+          Dialoge.removeChild("Game", _temp);
+        }
 
-          await music.play(click);
-          return Future.value(true);
-        },
-        child: Scaffold(
-            body: Container(
-                decoration: utils.gradBack(),
-                child: Column(
+        await music.play(click);
+        return Future.value(true);
+      },
+      child: Scaffold(
+        body: Container(
+            decoration: utils.gradBack(),
+            child: Column(
+              children: [
+                //find opponent image
+                Container(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Image.asset(img, width: 123, height: 137),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 18.0),
+                          child: Text(oppMsg),
+                        ),
+                      ],
+                    )),
+
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    //find opponent image
-                    Container(
-                        height: MediaQuery.of(context).size.height * 0.5,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Image.asset(
-                                img, width: 123, height: 137),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 18.0),
-                              child: Text(oppMsg),
-                            ),
-                          ],
-                        )),
-
-                    Column(
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                    ),
+                    //players profile pic
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.1,
+                        Expanded(
+                          flex: 4,
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                  height: 80.0,
+                                  width: 80.0,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: white,
+                                      )),
+                                  child: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: CircleAvatar(
+                                          radius: 50,
+                                          backgroundColor: secondaryColor,
+                                          backgroundImage: _profilePic == null
+                                              ? null
+                                              : NetworkImage(_profilePic!)))),
+                              SizedBox(
+                                height: 5,
+                              ),
+                            ],
+                          ),
                         ),
-                        //players profile pic
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                              flex: 4,
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                      height: 80.0,
-                                      width: 80.0,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: white,
-                                          )),
-                                      child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: CircleAvatar(
-                                              radius: 50,
-                                              backgroundColor: secondaryColor,
-                                              backgroundImage:
-                                                  _profilePic == null
-                                                      ? null
-                                                      : NetworkImage(
-                                                          _profilePic!)))),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: getSvgImage(
-                                imageName: "vs_iconbig",
-                                width: 48,
-                                height: 47,
-                              ),
-                            ),
-                            Expanded(
-                                flex: 4,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      height: 80.0,
-                                      width: 80.0,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: white,
-                                          )),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: CircleAvatar(
-                                            radius: 50,
-                                            backgroundColor: back,
-                                            backgroundImage: oppositPlayerName
-                                                            .value !=
-                                                        "" &&
+                        Expanded(
+                          flex: 2,
+                          child: getSvgImage(
+                            imageName: "vs_iconbig",
+                            width: 48,
+                            height: 47,
+                          ),
+                        ),
+                        Expanded(
+                            flex: 4,
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 80.0,
+                                  width: 80.0,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                        color: white,
+                                      )),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: CircleAvatar(
+                                        radius: 50,
+                                        backgroundColor: back,
+                                        backgroundImage:
+                                            oppositPlayerName.value != "" &&
                                                     canUpdateUi == true
                                                 ? NetworkImage("$_opporentPic")
                                                 : null,
-                                            child: oppositPlayerName.value !=
-                                                        "" &&
-                                                    canUpdateUi == true
-                                                ? null
-                                                : Center(
-                                                    child: Text(
-                                                    "?",
-                                                    style: TextStyle(
-                                                        fontSize: 30,
-                                                        color: primaryColor),
-                                                  ))),
-                                      ),
-                                    ),
-                                  ],
-                                )),
-                          ],
-                        ),
-                        //players name
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                                flex: 1,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10.0, top: 10.0),
-                                  child: Text(
-                                    "$_displayName \n",
-                                    style: TextStyle(color: white),
-                                    textAlign: TextAlign.center,
-                                    maxLines: 2,
-                                    softWrap: true,
-                                    overflow: TextOverflow.ellipsis,
+                                        child: oppositPlayerName.value != "" &&
+                                                canUpdateUi == true
+                                            ? null
+                                            : Center(
+                                                child: Text(
+                                                "?",
+                                                style: TextStyle(
+                                                    fontSize: 30,
+                                                    color: primaryColor),
+                                              ))),
                                   ),
-                                )),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width / 4.5,
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    right: 10.0, top: 10.0),
-                                child: Text(
-                                  oppositPlayerName.value != "" &&
-                                          canUpdateUi == true
-                                      ? "${oppositPlayerName.value} \n"
-                                      : "$opponentPlayerName \n",
-                                  style: TextStyle(color: white),
-                                  textAlign: TextAlign.center,
-                                  maxLines: 2,
-                                  softWrap: true,
-                                  overflow: TextOverflow.ellipsis,
                                 ),
-                              ),
-                            )
-                          ],
-                        ),
-
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.1,
-                        ),
-                        CupertinoButton(
-                            padding: EdgeInsets.zero,
-                            child: Container(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 5),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: back),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(
-                                      btnTxt ==
-                                              utils.getTranslated(
-                                                  context, "tryAgain")
-                                          ? Icons.replay_circle_filled
-                                          : Icons.cancel,
-                                      color: primaryColor,
-                                    ),
-                                    Text(
-                                      btnTxt,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .copyWith(color: primaryColor),
-                                    ),
-                                  ],
-                                )),
-                            onPressed: () {
-                              if (btnTxt ==
-                                  utils.getTranslated(context, "tryAgain")) {
-                                setState(() {
-                                  oppMsg = utils.getTranslated(
-                                      context, "findingOpp");
-                                  opponentPlayerName = utils.getTranslated(
-                                      context, "waitForOpponent");
-                                  img = "assets/images/kittyonly.png";
-                                  btnTxt = "Cancel";
-                                });
-                                findGame();
-                                oppTimer!.cancel();
-                                oppTimer = Timer(Duration(seconds: 60), () {
-                                  if (_temp != null) {
-                                    Dialoge.removeChild("Game", _temp);
-                                  }
-                                  setState(() {
-                                    oppMsg = utils.getTranslated(
-                                        context, "notFoundOpp");
-                                    opponentPlayerName = utils.getTranslated(
-                                        context, "noOpponentOnline");
-                                    img = "assets/images/kittyonly.png";
-                                    btnTxt = utils.getTranslated(
-                                        context, "tryAgain");
-                                  });
-                                });
-                              } else if (btnTxt ==
-                                  utils.getTranslated(context, "cancel")) {
-                                if (_temp != "") {
-                                  FirebaseDatabase.instance
-                                      .ref()
-                                      .child("Game")
-                                      .child(_temp!)
-                                      .update({"status": "closed"});
-                                  Dialoge.removeChild("Game", _temp);
-                                }
-                                oppTimer!.cancel();
-                                Navigator.pop(context);
-                              }
-                            }),
+                              ],
+                            )),
                       ],
                     ),
+                    //players name
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Expanded(
+                            flex: 1,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 10.0, top: 10.0),
+                              child: Text(
+                                "$_displayName \n",
+                                style: TextStyle(color: white),
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                softWrap: true,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            )),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 4.5,
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(right: 10.0, top: 10.0),
+                            child: Text(
+                              oppositPlayerName.value != "" &&
+                                      canUpdateUi == true
+                                  ? "${oppositPlayerName.value} \n"
+                                  : "$opponentPlayerName \n",
+                              style: TextStyle(color: white),
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              softWrap: true,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.1,
+                    ),
+                    CupertinoButton(
+                        padding: EdgeInsets.zero,
+                        child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: back),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  btnTxt ==
+                                          utils.getTranslated(
+                                              context, "tryAgain")
+                                      ? Icons.replay_circle_filled
+                                      : Icons.cancel,
+                                  color: primaryColor,
+                                ),
+                                Text(
+                                  btnTxt,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .copyWith(color: primaryColor),
+                                ),
+                              ],
+                            )),
+                        onPressed: () {
+                          if (btnTxt ==
+                              utils.getTranslated(context, "tryAgain")) {
+                            setState(() {
+                              oppMsg =
+                                  utils.getTranslated(context, "findingOpp");
+                              opponentPlayerName = utils.getTranslated(
+                                  context, "waitForOpponent");
+                              img = "assets/images/kittyonly.png";
+                              btnTxt = "Cancel";
+                            });
+                            findGame();
+                            oppTimer!.cancel();
+                            oppTimer = Timer(Duration(seconds: 60), () {
+                              if (_temp != null) {
+                                Dialoge.removeChild("Game", _temp);
+                              }
+                              setState(() {
+                                oppMsg =
+                                    utils.getTranslated(context, "notFoundOpp");
+                                opponentPlayerName = utils.getTranslated(
+                                    context, "noOpponentOnline");
+                                img = "assets/images/kittyonly.png";
+                                btnTxt =
+                                    utils.getTranslated(context, "tryAgain");
+                              });
+                            });
+                          } else if (btnTxt ==
+                              utils.getTranslated(context, "cancel")) {
+                            if (_temp != "") {
+                              FirebaseDatabase.instance
+                                  .ref()
+                                  .child("Game")
+                                  .child(_temp!)
+                                  .update({"status": "closed"});
+                              Dialoge.removeChild("Game", _temp);
+                            }
+                            oppTimer!.cancel();
+                            Navigator.pop(context);
+                          }
+                        }),
                   ],
-                ))));
+                ),
+              ],
+            )),
+      ),
+    );
   }
 }

@@ -60,7 +60,7 @@ class _AuthOptionsScreenState extends State<Login> {
             SizedBox(
               height: 50,
             ),
-            /*
+            //TODO: Here
             Container(
               padding: EdgeInsets.symmetric(
                   vertical: MediaQuery.of(context).size.height * 0.1),
@@ -71,7 +71,7 @@ class _AuthOptionsScreenState extends State<Login> {
                     .headlineLarge!
                     .copyWith(fontFamily: 'DISPLATTER', color: white),
               ),
-            ),*/
+            ),
             Platform.isIOS
                 ? Container(
                     height: MediaQuery.of(context).size.height * 0.06,

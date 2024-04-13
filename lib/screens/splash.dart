@@ -8,7 +8,6 @@ import '../Helper/constant.dart';
 import '../Helper/utils.dart';
 
 class SplashScreen extends StatefulWidget {
-
   static const routeName = '/splashScreen';
 
   @override
@@ -21,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-   navigateToNextPage();
+    navigateToNextPage();
   }
 
   @override
@@ -31,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
         body: Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      decoration:BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.white,
       ),
       child: Column(
@@ -42,14 +41,14 @@ class _SplashScreenState extends State<SplashScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                   "assets/images/splashscreen.png",
+                  "assets/images/Kitty.png",
                   width: 250,
                   height: 250,
                 ),
               ],
             ),
           ),
-         /* Container(
+          /* Container(
             padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).size.height * 0.1),
             child: Text(

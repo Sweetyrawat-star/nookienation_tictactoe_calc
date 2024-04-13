@@ -119,15 +119,18 @@ class GameHistoryState extends State<GameHistory> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        //Advertisement.showAd();
+    return PopScope(
+      canPop: true,
+      onPopInvoked: (didPop) {
         music.play(click);
-        return Future.value(true);
+        // canPop: () async {
+        //   //Advertisement.showAd();
+        //   music.play(click);
+        //   // return Future.value(true);
       },
       child: Scaffold(
         backgroundColor: Colors.white,
-        /* appBar: AppBar(
+        appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -150,7 +153,7 @@ class GameHistoryState extends State<GameHistory> {
             ],
           ),
           centerTitle: true,
-        ),*/
+        ),
         body: Column(
           children: [
             Container(
