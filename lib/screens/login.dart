@@ -51,13 +51,15 @@ class _AuthOptionsScreenState extends State<Login> {
               alignment: Alignment.bottomCenter,
               height: MediaQuery.of(context).size.height * 0.4,
               child: Image.asset(
-                "assets/images/Kitty.png",
-               //"assets/images/kittytext.png",
+                "assets/images/kittytext.png",
+                //"assets/images/kittytext.png",
                 width: 300,
                 height: 300,
               ),
             ),
-            SizedBox(height: 50,),
+            SizedBox(
+              height: 50,
+            ),
             /*
             Container(
               padding: EdgeInsets.symmetric(
@@ -119,10 +121,11 @@ class _AuthOptionsScreenState extends State<Login> {
                   ),
                 ),
                 onPressed: () async {
-                 await  Auth.signin(context, false, "Android",
+                  await Auth.signin(context, false, "Android",
                       email: "", password: "");
                 },
-                icon: getSvgImage(imageName: "google_logo",imageColor: Colors.white),
+                icon: getSvgImage(
+                    imageName: "google_logo", imageColor: Colors.white),
                 label: Center(
                   child: Text(
                     utils.getTranslated(context, "signInGoogle"),
@@ -155,7 +158,10 @@ class _AuthOptionsScreenState extends State<Login> {
                     t?.cancel();
                   });
                 },
-                icon: Icon(Icons.person_2_outlined,color: Colors.white,),
+                icon: Icon(
+                  Icons.person_2_outlined,
+                  color: Colors.white,
+                ),
                 //getSvgImage(imageName: 'play_guest'),
                 label: Center(
                   child: Text(

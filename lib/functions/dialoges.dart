@@ -1,6 +1,5 @@
 import 'dart:async';
 
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,151 +14,151 @@ import '../widgets/alertDialoge.dart';
 
 class Dialoge {
   static winner(
-      BuildContext context,
-      String? playerName,
-      String? pic,
-      String winText, [
-        String? point,
-        String? gameKey,
-      ]) {
+    BuildContext context,
+    String? playerName,
+    String? pic,
+    String winText, [
+    String? point,
+    String? gameKey,
+  ]) {
     showDialog(
         barrierDismissible: false,
         context: context,
         builder: (context) => WillPopScope(
-          onWillPop: () async => false,
-          child: AlertDialog(
-            backgroundColor: Colors.transparent,
-            elevation: 4,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-              side: BorderSide(color: Colors.white, width: 2.0),
-            ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 18.0),
-                  child: Text(
-                    utils.getTranslated(context, "gameOver"),
-                    style: TextStyle(color: white),
-                  ),
+              onWillPop: () async => false,
+              child: AlertDialog(
+                backgroundColor: Colors.transparent,
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                  side: BorderSide(color: Colors.white, width: 2.0),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 15.0),
-                  child: Container(
-                      height: 80.0,
-                      width: 80.0,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: white,
-                          )),
-                      child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Container(
-                              clipBehavior: Clip.antiAlias,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50)),
-                              child: (pic == ""
-                                  ? Image.asset(
-                                  "assets/images/kittyonly.png",
-                                  width: double.maxFinite,
-                                  height: double.maxFinite,
-                                  fit: BoxFit.fill)
-                                  : Image.network(pic!))))),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        "$playerName" +
-                            " " +
-                            utils.getTranslated(context, "win"),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 18.0),
+                      child: Text(
+                        utils.getTranslated(context, "gameOver"),
+                        style: TextStyle(color: white),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15.0),
+                      child: Container(
+                          height: 80.0,
+                          width: 80.0,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: white,
+                              )),
+                          child: Padding(
+                              padding: const EdgeInsets.all(5),
+                              child: Container(
+                                clipBehavior: Clip.antiAlias,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50)),
+                                child: (pic == ""
+                                    ? Image.asset("assets/images/kittyonly.png",
+                                        width: double.maxFinite,
+                                        height: double.maxFinite,
+                                        fit: BoxFit.fill)
+                                    : Image.network(pic!)),
+                              ))),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            "$playerName" +
+                                " " +
+                                utils.getTranslated(context, "win"),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                    color: white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14),
+                            textAlign: TextAlign.center,
+                          ),
+                          // Check if playerName does not contain "Kitty"
+                          if (!playerName!
+                              .contains(utils.getTranslated(context, "kitty")))
+                            Text(
+                              utils.getTranslated(
+                                  context, "yes,IwongamesagainstKitty"),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                      color: white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12),
+                              textAlign: TextAlign.center,
+                            ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        winText,
                         style: Theme.of(context)
                             .textTheme
-                            .titleLarge!
-                            .copyWith(
-                            color: white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14),
-                        textAlign: TextAlign.center,
+                            .bodySmall!
+                            .copyWith(color: white),
                       ),
-                      // Check if playerName does not contain "Kitty"
-                      if (!playerName!.contains(utils.getTranslated(context, "kitty")))
-                        Text(
-                          utils.getTranslated(context, "yes,IwongamesagainstKitty"),
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .copyWith(
-                              color: white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12),
-                          textAlign: TextAlign.center,
-                        ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    winText,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall!
-                        .copyWith(color: white),
-                  ),
-                ),
-                point != ""
-                    ? Chip(
-                  backgroundColor: secondaryColor,
-                  label: Text(
-                    point!,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleSmall!
-                        .copyWith(color: white),
-                  ),
-                  avatar: getSvgImage(imageName: "coin_symbol"),
-                )
-                    : Container(),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: TextButton(
-                    onPressed: () async {
-                      music.play(click);
+                    ),
+                    point != ""
+                        ? Chip(
+                            backgroundColor: secondaryColor,
+                            label: Text(
+                              point!,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(color: white),
+                            ),
+                            avatar: getSvgImage(imageName: "coin_symbol"),
+                          )
+                        : Container(),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: TextButton(
+                        onPressed: () async {
+                          music.play(click);
 
-                      if (gameKey != null) {
-                        removeChild("Game", gameKey);
-                      }
+                          if (gameKey != null) {
+                            removeChild("Game", gameKey);
+                          }
 
-                      Navigator.popUntil(
-                          context, ModalRoute.withName("/home"));
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: secondarySelectedColor,
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(20.0)),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 18.0, vertical: 5),
-                        child: Text(
-                          utils.getTranslated(context, "ok"),
-                          style: TextStyle(color: Colors.white),
+                          Navigator.popUntil(
+                              context, ModalRoute.withName("/home"));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: secondarySelectedColor,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0)),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 18.0, vertical: 5),
+                            child: Text(
+                              utils.getTranslated(context, "ok"),
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-        ));
-
-
+              ),
+            ));
   }
 
   tie(BuildContext context, String fromScreen,
@@ -169,7 +168,6 @@ class Dialoge {
         barrierDismissible: false,
         isMultipleAction: true,
         context: context,
-
         title: Text(
           utils.getTranslated(context, "gameOver"),
           style: TextStyle(color: white),

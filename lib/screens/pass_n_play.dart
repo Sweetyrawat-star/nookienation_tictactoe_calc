@@ -385,10 +385,8 @@ class _PassNPLayState extends State<PassNPLay> {
                         Row(
                           children: [
                             CircleAvatar(
-                              child: Image.asset(
-                                  'assets/images/kittytext.png',
-                                  width: 154,
-                                  height: 172),
+                              child: Image.asset('assets/images/Kitty.png',
+                                  width: 154, height: 172),
                               radius: 25,
                               backgroundColor: Colors.transparent,
                             ),
@@ -451,7 +449,7 @@ class _PassNPLayState extends State<PassNPLay> {
                               child: CircleAvatar(
                                 backgroundColor: Colors.transparent,
                                 child: Image.asset(
-                                   "assets/images/kittytext.png",
+                                    "assets/images/nookienationlogo.png",
                                     width: 154,
                                     height: 172),
                                 radius: 25,

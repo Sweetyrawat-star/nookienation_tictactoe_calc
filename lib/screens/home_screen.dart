@@ -276,35 +276,37 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                 Navigator.pushNamed(context, "/leaderboard");
               },
               child: getSvgImage(
-                imageName: 'leaderboard_dark',
-                height: 20,
-                width: 20,
-                imageColor: secondarySelectedColor
-              ),
+                  imageName: 'leaderboard_dark',
+                  height: 20,
+                  width: 20,
+                  imageColor: secondarySelectedColor),
             ),
           ),
           GestureDetector(
-            onTap: () async {
-              //navigate to profile screen
-              music.play(click);
-              Navigator.pushNamed(context, "/profile").then((value) {
-                _getSavedLanguage();
-                getSkinvalues();
-                setState(() {});
-              });
-            },
-            child: Container(
-              padding: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left:10.0,right: 10),
-                child: Icon(Icons.dashboard,color:secondarySelectedColor,size: 16,),
-              ),
-            )
-          ),
+              onTap: () async {
+                //navigate to profile screen
+                music.play(click);
+                Navigator.pushNamed(context, "/profile").then((value) {
+                  _getSavedLanguage();
+                  getSkinvalues();
+                  setState(() {});
+                });
+              },
+              child: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0, right: 10),
+                  child: Icon(
+                    Icons.dashboard,
+                    color: secondarySelectedColor,
+                    size: 16,
+                  ),
+                ),
+              )),
         ],
       ),
       body: Stack(
@@ -340,7 +342,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                       bottom: MediaQuery.of(context).size.height * 0.05),
                   width: MediaQuery.of(context).size.width / 2,
                   child: Padding(
-                    padding: const EdgeInsets.only(left:15.0),
+                    padding: const EdgeInsets.only(left: 15.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -353,28 +355,25 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                               height: 120,
                               width: 120,
                               child: Image.asset(
-                                "assets/images/nookienationlogo.png",
-                              //  "assets/images/Kitty.png",
+                                "assets/images/Kitty.png",
+                                //  "assets/images/Kitty.png",
                               ),
                             ),
                           ),
                         ),
-
                         SlideTransition(
                           position: kittyAnimation,
                           child: Image.asset(
-                           // "assets/images/kittytext.png",
-                              "assets/images/Kitty.png",
+                            // "assets/images/kittytext.png",
+                            "assets/images/kittytext.png",
                             height: 130,
                             width: 191,
                           ),
                         ),
-
                       ],
                     ),
                   ),
                 ),
-
                 GestureDetector(
                   onVerticalDragUpdate: (details) async {
                     int sensitivity = 8;
@@ -535,12 +534,12 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
     return showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          backgroundColor: Colors.transparent,
-          elevation: 4,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-            side: BorderSide(color: Colors.white, width: 2.0),
-          ),
+              backgroundColor: Colors.transparent,
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+                side: BorderSide(color: Colors.white, width: 2.0),
+              ),
               title: Center(
                 child: Text(
                   utils.getTranslated(context, "amountDial"),
@@ -581,7 +580,8 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
               actions: [
                 ElevatedButton.icon(
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(secondarySelectedColor),
+                        backgroundColor:
+                            MaterialStateProperty.all(secondarySelectedColor),
                         shape: MaterialStateProperty.all(
                             const RoundedRectangleBorder(
                                 borderRadius:
@@ -610,7 +610,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                     ),
                     label: Text(
                       utils.getTranslated(context, "next"),
-                      style: TextStyle(color:Colors.white, fontSize: 12),
+                      style: TextStyle(color: Colors.white, fontSize: 12),
                     ))
               ],
             ));
@@ -624,6 +624,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
         builder: (_) =>
             SelectLevelDialog(opponentSkin: opponentSkin, userSkin: userSkin));
   }
+
   selectPassNPlayDialog() {
     return showDialog(
       context: context,
@@ -634,15 +635,13 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
           borderRadius: BorderRadius.circular(30.0),
           side: BorderSide(color: Colors.white, width: 2.0),
         ),
-        title:  Center(
+        title: Center(
           child: Text(
             utils.getTranslated(context, "passNplayDialoge"),
-            style: Theme.of(context)
-                .textTheme
-                .titleSmall!
-                .copyWith(color: white),
+            style:
+                Theme.of(context).textTheme.titleSmall!.copyWith(color: white),
           ),
-        ),// Set background color to transparent
+        ), // Set background color to transparent
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -731,11 +730,10 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
         actions: [
           ElevatedButton.icon(
               style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(secondarySelectedColor),
-                  shape: MaterialStateProperty.all(
-                      const RoundedRectangleBorder(
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(20.0))))),
+                  backgroundColor:
+                      MaterialStateProperty.all(secondarySelectedColor),
+                  shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0))))),
               onPressed: () async {
                 music.play(click);
                 if (player1controller.text.isNotEmpty &&
@@ -765,8 +763,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
     );
   }
 
-
- /* selectPassNPlayDialog() {
+  /* selectPassNPlayDialog() {
     return showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -908,12 +905,12 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
     return showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          backgroundColor: Colors.transparent,
-          elevation: 4,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-            side: BorderSide(color: Colors.white, width: 2.0),
-          ),
+              backgroundColor: Colors.transparent,
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+                side: BorderSide(color: Colors.white, width: 2.0),
+              ),
               title: Center(
                 child: Text(
                   utils.getTranslated(context, "numberDial"),
@@ -947,7 +944,8 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
               actions: [
                 ElevatedButton(
                     style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(secondarySelectedColor),
+                        backgroundColor:
+                            MaterialStateProperty.all(secondarySelectedColor),
                         shape: MaterialStateProperty.all(
                             const RoundedRectangleBorder(
                                 borderRadius:
@@ -1014,8 +1012,10 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                   /*secondaryColor,
       primaryColor,*/
                 ]),
-            border: Border.all(color: secondarySelectedColor,),
-           // color: topSwipeColor.value,
+            border: Border.all(
+              color: secondarySelectedColor,
+            ),
+            // color: topSwipeColor.value,
             borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(30), topLeft: Radius.circular(30))),
         child: Center(
@@ -1044,7 +1044,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
         children: [
           getSvgImage(
             imageName: itemList[pos].icon,
-            imageColor:Colors.white,
+            imageColor: Colors.white,
             height: 30,
           ),
           Padding(
@@ -1066,10 +1066,9 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
             width: MediaQuery.of(context).size.width * 0.3,
             child: Text(
               itemList[pos].desc,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall!
-                  .copyWith(color: Colors.white,),
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: Colors.white,
+                  ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               softWrap: true,
@@ -1128,21 +1127,23 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
               ),
             height: MediaQuery.of(context).size.height / 3.3,
             decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Color(0xff4c3b6c),
-                          Color(0xff584575),
-                          Color(0xff4e3b6c),
-                          Color(0xff6e416f),
-                          Color(0xff754271),
-                          Color(0xff794271),
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xff4c3b6c),
+                      Color(0xff584575),
+                      Color(0xff4e3b6c),
+                      Color(0xff6e416f),
+                      Color(0xff754271),
+                      Color(0xff794271),
 
-                          /*secondaryColor,
+                      /*secondaryColor,
       primaryColor,*/
-                        ]),
-                border: Border.all(color: secondarySelectedColor,),
+                    ]),
+                border: Border.all(
+                  color: secondarySelectedColor,
+                ),
                 //color: bottomSwipeColor.value,
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(30),
@@ -1255,8 +1256,10 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                   /*secondaryColor,
       primaryColor,*/
                 ]),
-            border: Border.all(color: secondarySelectedColor,),
-           // color: topSwipeColor.value,
+            border: Border.all(
+              color: secondarySelectedColor,
+            ),
+            // color: topSwipeColor.value,
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(30), topLeft: Radius.circular(30))),
         child: Center(
@@ -1423,7 +1426,7 @@ class _CoinState extends State<Coin> {
     return GestureDetector(
       onTap: () {
         if (!_auth.currentUser!.isAnonymous) {
-        //  Navigator.pushNamed(context, "/shop");
+          //  Navigator.pushNamed(context, "/shop");
         }
       },
       child: Chip(
