@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nookienation_tictactoe_calc/Helper/constant.dart';
+import 'package:nookienation_tictactoe_calc/screens/web_delete_account.dart';
 
 import '../Helper/color.dart';
 import '../Helper/string.dart';
@@ -55,13 +56,27 @@ class Demo extends StatelessWidget {
                     fontWeight: FontWeight.bold))),
       ),
       body: ListView(
-        padding: EdgeInsets.only(left:20,right: 20,top: 20),
+        padding: EdgeInsets.only(left:20,right: 20,top: 20,bottom: 20),
         children: [
           Text(
             privacyPolicy,
             textAlign: TextAlign.justify,
             style: TextStyle(color: primaryColor, fontSize: 16),
-          )
+          ),
+          ElevatedButton(
+            onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DeleteAccountScreen()),
+              );
+            },
+            child: Text("Delete Account",style: TextStyle(color: Colors.white),),
+            style: ElevatedButton.styleFrom(
+              minimumSize: Size(MediaQuery.of(context).size.width, 60),
+              maximumSize: Size(MediaQuery.of(context).size.width, 100),
+              backgroundColor: Colors.red,
+            ),
+          ),
         ],
       ),
     );
