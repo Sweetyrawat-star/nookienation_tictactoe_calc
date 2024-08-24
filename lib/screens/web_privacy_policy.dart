@@ -22,12 +22,11 @@ class _MyAppPrivacyUrlState extends State<MyAppPrivacyUrl> {
           useMaterial3: true,
           colorSchemeSeed: Colors.green,
         ),
-        home: Demo()
-    );
+        home: Demo());
     ;
   }
-
 }
+
 class Demo extends StatelessWidget {
   const Demo({super.key});
 
@@ -35,48 +34,81 @@ class Demo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size(MediaQuery.of(context).size.width,80),
+        preferredSize: Size(MediaQuery.of(context).size.width, 80),
         child: AppBar(
-            elevation: 3,
-            centerTitle: false,
-            leading: Padding(
-              padding: const EdgeInsets.only(left: 8.0,),
-              child: Image.asset(
-                "assets/images/nookienation.png",
-                height: 344,
-                fit: BoxFit.contain,
+          elevation: 3,
+          centerTitle: false,
+          leading: Padding(
+            padding: const EdgeInsets.only(
+              left: 8.0,
+            ),
+            child: Image.asset(
+              "assets/images/nookienation.png",
+              height: 344,
+              fit: BoxFit.contain,
+            ),
+          ),
+          actions: [
+            // Spacer(),
+            Padding(
+              padding: EdgeInsets.all(5),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DeleteAccountScreen(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Delete Account",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  minimumSize:
+                      Size(MediaQuery.of(context).size.width * .20, 60),
+                  maximumSize:
+                      Size(MediaQuery.of(context).size.width * .20, 60),
+                  backgroundColor: Colors.red,
+                ),
               ),
             ),
-            title: Text(appName,
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold))),
+          ],
+          title: Text(
+            appName,
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge!
+                .copyWith(color: Colors.black, fontWeight: FontWeight.bold),
+          ),
+        ),
       ),
       body: ListView(
-        padding: EdgeInsets.only(left:20,right: 20,top: 20,bottom: 20),
+        padding: EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 20),
         children: [
           Text(
             privacyPolicy,
             textAlign: TextAlign.justify,
             style: TextStyle(color: primaryColor, fontSize: 16),
           ),
-          ElevatedButton(
-            onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => DeleteAccountScreen()),
-              );
-            },
-            child: Text("Delete Account",style: TextStyle(color: Colors.white),),
-            style: ElevatedButton.styleFrom(
-              minimumSize: Size(MediaQuery.of(context).size.width, 60),
-              maximumSize: Size(MediaQuery.of(context).size.width, 100),
-              backgroundColor: Colors.red,
-            ),
-          ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => DeleteAccountScreen()),
+          //     );
+          //   },
+          //   child: Text(
+          //     "Delete Account",
+          //     style: TextStyle(color: Colors.white),
+          //   ),
+          //   style: ElevatedButton.styleFrom(
+          //     minimumSize: Size(MediaQuery.of(context).size.width, 60),
+          //     maximumSize: Size(MediaQuery.of(context).size.width, 100),
+          //     backgroundColor: Colors.red,
+          //   ),
+          // ),
         ],
       ),
     );
